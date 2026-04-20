@@ -33,7 +33,7 @@ O design segue uma estética **Retro-Minimalista de Alto Contraste**, utilizando
 
 ## ❤️ Conexão Pessoal
 
-Para mim, os games sempre foram o primeiro ponto de contato com a lógica e a tecnologia. Este projeto é uma forma de documentar como o brilho de uma tela CRT na infância se transformou no desejo de construir sistemas e interfaces hoje. Cada seção do site representa um nível superado no meu aprendizado como desenvolvedor.
+Para mim, os games sempre foram o primeiro ponto de contato com a lógica e a tecnologia. Este projeto é uma forma de documentar como o brilho de uma tela CRT na infância se transformou no desejo de construir sistemas e interfaces hoje.
 
 ---
 
