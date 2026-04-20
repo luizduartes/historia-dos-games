@@ -24,9 +24,9 @@ O site foi concebido como uma **experiência linear e imersiva**. Ao contrário 
 
 O design segue uma estética **Retro-Minimalista de Alto Contraste**, utilizando a paleta **CGA Legacy** para evocar nostalgia com um acabamento moderno.
 
-* **Background:** `#050505` (Black Out) – Profundidade e foco total no conteúdo.
-* **Primary:** `#00FFFF` (Pure Cyan) – Usado para títulos e fluxo de navegação.
-* **Accent:** `#FF00FF` (Neon Magenta) – Usado para elementos de ação, destaque e a bolinha do jogo.
+* **Background:** `#121212` (Black Out) – Profundidade e foco total no conteúdo.
+* **Primary:** `#00CCFF` (Sky Blue Neon) – Usado para títulos e fluxo de navegação.
+* **Accent:** `#0066FF` (Deep Neon Blue) – Usado para elementos de ação, destaque e a bolinha do jogo.
 * **Tipografia:** *Space Grotesk* – Uma fonte geométrica que une a precisão técnica ao design contemporâneo.
 
 ---
@@ -40,6 +40,5 @@ Para mim, os games sempre foram o primeiro ponto de contato com a lógica e a te
 ## 🛠️ Tecnologias Utilizadas
 
 * **HTML5:** Estrutura semântica para acessibilidade e SEO.
-* **CSS3:** Layouts avançados com `Flexbox`, `Scroll Snapping` e animações Neon.
+* **CSS3:** Layouts estilizados com `Flexbox`, Scroll dinâmico e animações Neon.
 * **JavaScript (Vanilla):** Lógica do jogo, manipulação de DOM e controle do scroll horizontal.
-* **Figma:** Prototipagem de alta fidelidade e design de interface.
