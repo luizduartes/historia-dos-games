@@ -1,29 +1,44 @@
 const main = document.querySelector('main');
+const progressFill = document.querySelector('.progress-fill');
+const header = document.querySelector('header');
 
-// document.documentElement.addEventListener('wheel', (event) => {
-//   if (event.deltaY !== 0) {
-//     event.preventDefault()
-//     // Movemos um valor maior para garantir que o "snap" entenda a intenção de trocar de seção
-//     document.documentElement.scrollLeft += event.deltaY
-//   }
-// }, { passive: false })
+let targetScroll = 0;
+let currentScroll = 0;
+const scrollEase = 0.1;
+const getMaxScroll = () => main.scrollWidth - main.clientWidth;
 
-let targetScroll = 0
-let currentScroll = 0
-const scrollEase = 0.1
-const maxScroll = document.documentElement.scrollWidth - document.documentElement.clientWidth;
+window.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    
+    targetScroll += event.deltaY;
+    
+    const maxScroll = getMaxScroll();
+    
+    if (targetScroll < 0) targetScroll = 0;
+    if (targetScroll > maxScroll) targetScroll = maxScroll;
 
-document.documentElement.addEventListener('wheel', (event) => {
-    event.preventDefault()
-    targetScroll += event.deltaY
-    if (targetScroll < 0) targetScroll = 0
-    if (targetScroll > maxScroll) targetScroll = maxScroll
-}, { passive: false })
+    if (targetScroll >= window.innerWidth) {
+        header.style.opacity = 1;
+    } else {
+        header.style.opacity = 0;
+    }
+
+}, { passive: false });
 
 function update() {
-    currentScroll += (targetScroll - currentScroll) * scrollEase
-    document.documentElement.scrollLeft = currentScroll
-    requestAnimationFrame(update)
+    const maxScroll = getMaxScroll();
+    
+    currentScroll += (targetScroll - currentScroll) * scrollEase;
+    main.scrollLeft = currentScroll;
+    if (maxScroll > 0) {
+        progressFill.style.width = `${(targetScroll * 100) / maxScroll}%`;
+    }
+
+    requestAnimationFrame(update);
 }
 
-update()
+update();
+
+window.addEventListener('resize', () => {
+    targetScroll = main.scrollLeft;
+});
