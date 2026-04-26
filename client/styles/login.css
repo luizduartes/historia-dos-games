@@ -12,6 +12,8 @@ section {
 
 /* LOGIN BOX */
 .login-box {
+    position: relative;
+
     background-color: var(--text);
     width: 70%;
     border-top: 30px solid var(--accent);
@@ -159,4 +161,24 @@ h3{
 .progress-text {
     font-size: 14px;
     color: #0D2333;
+}
+
+/* DIV MENSAGEM */
+#div_mensagem {
+    position: absolute;
+    width: max-content;
+    border-radius: 10px;
+    height: 40px;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: 700;
+    left: 50%;
+    top: -20px;
+    transform: translateX(-50%);
+    transition: all .3s ease-in-out;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
 }

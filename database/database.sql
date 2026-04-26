@@ -4,7 +4,7 @@ USE historia_dos_games;
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(45),
-    email VARCHAR(80),
+    email VARCHAR(80) UNIQUE,
     senha VARCHAR(30),
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
 );
