@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Jogos - Cadastro</title>
+    <link rel="icon" type="image/png" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <script src="../scripts/auth.js" defer></script>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="background-video-container">
+                <video autoplay muted loop class="video-background">
+                    <source src="../images/computer-pong-animation.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos em HTML5.
+                </video>
+                <div class="fillet-gradient"></div>
+            </div>
+            <div class="login-box-container">
+                <div class="login-box">
+
+                    <div class="login-top">
+                        <h3 class="title">CADASTRO</h3>
+                    </div>
+                    
+                    <div class="campos-wrap">
+                        <div class="campo">
+                            <label>USERNAME</label>
+                            <input type="username" id="ipt_username" autocomplete="off">
+                        </div>
+                        <div class="campo">
+                            <label>E-MAIL</label>
+                            <input type="email" id="ipt_email" autocomplete="off">
+                        </div>
+                        <div class="campo">
+                            <label>SENHA</label>
+                            <input type="password" id="ipt_senha">
+                        </div>
+                    </div>
+
+                    <div class="login-bottom">
+                        <button onclick="auth_register()">CADASTRAR</button>
+                        <a href="./login.html">FAZER LOGIN</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
