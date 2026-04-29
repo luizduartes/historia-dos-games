@@ -1,11 +1,72 @@
-@import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400');
+/* @import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400'); */
+
+/* VT323 (principal - CRT) */
+@font-face {
+  font-family: 'VT323';
+  src: url('../assets/fonts/VT323-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Press Start 2P (pixel - destaque) */
+@font-face {
+  font-family: 'PressStart2P';
+  src: url('../assets/fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* IBM Plex Mono (legível - textos) */
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('../assets/fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
-    --text: #FFFFFF;
-    --background: #121212;
-    --primary: #00CCFF;
-    --secondary: #1C1C1C;
-    --accent: #0066FF;
+  /* VERDE CRT (principal) */
+  --color-primary: #7CFFB2;       /* destaque forte (títulos, foco) */
+  --color-primary-soft: #4FD98A;  /* texto padrão */
+  --color-primary-dark: #2FAF6E;  /* elementos secundários */
+
+  /* GLOW (efeito CRT) */
+  --glow-soft: rgba(124, 255, 178, 0.08);
+  --glow-medium: rgba(124, 255, 178, 0.2);
+  --glow-strong: rgba(124, 255, 178, 0.4);
+
+  /* BACKGROUND */
+  --bg-main: #0D0F0E;       /* fundo geral */
+  --bg-section: #121614;    /* variação de seção */
+  --bg-surface: #1A1F1C;    /* caixas / cards */
+
+  /* AMBIENTE (madeira / hardware) */
+  --color-wood: #3A2F2A;
+  --color-wood-dark: #2A211D;
+  --color-wood-light: #4A3B34;
+
+  /* TEXTO */
+  --text-primary: #4FD98A;     /* padrão */
+  --text-secondary: #9FB3A8;   /* descrição */
+  --text-muted: #6E8076;      /* pouco importante */
+
+  /* BORDAS */
+  --border-soft: rgba(124, 255, 178, 0.15);
+  --border-medium: rgba(124, 255, 178, 0.3);
+
+  /* (OPCIONAL - remover se quiser 100% retrô puro) */
+  --accent-disabled: #2A3A36; /* substituto da sua barra azul antiga */
+
+  /* OVERLAY CRT */
+  --crt-overlay: rgba(0, 0, 0, 0.25);
+
+  /* SOMBRA */
+  --shadow-crt: 0 0 10px var(--glow-soft),
+                0 0 20px var(--glow-soft);
+
+  /* TEXTO COM GLOW */
+  --text-glow: 0 0 6px var(--glow-medium),
+               0 0 12px var(--glow-soft);
 }
 
 * {
