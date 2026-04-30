@@ -19,7 +19,7 @@ window.addEventListener('wheel', (event) => {
 
 }, { passive: false })
 
-function update() {
+function updateScroll() {
     const maxScroll = getMaxScroll()
     
     currentScroll += (targetScroll - currentScroll) * scrollEase
@@ -41,10 +41,10 @@ function update() {
         }
     })
 
-    requestAnimationFrame(update)
+    requestAnimationFrame(updateScroll)
 }
 
-update()
+// updateScroll()
 
 window.addEventListener('resize', () => {
     targetScroll = main.scrollLeft
@@ -59,3 +59,5 @@ Array.from(timelineProgressMarker).forEach((element, index) => {
         scrollToSection(index)
     })
 })
+
+export { updateScroll }
