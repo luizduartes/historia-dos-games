@@ -1,7 +1,7 @@
 const main = document.querySelector('main')
-const progressFill = document.querySelector('.progress-fill')
-const header = document.querySelector('header')
+const progressFill = document.querySelector('.timeline-fill-progress')
 const sections = document.querySelectorAll('section')
+const timelineProgressMarker = document.querySelectorAll('.timeline-progress-marker')
 
 let targetScroll = 0
 let currentScroll = 0
@@ -17,14 +17,6 @@ window.addEventListener('wheel', (event) => {
     if (targetScroll < 0) targetScroll = 0
     if (targetScroll > maxScroll) targetScroll = maxScroll
 
-    Array.from(sections).forEach((sec, index) => {
-        if (targetScroll >= sec.offsetLeft - scrollSnapValue && targetScroll <= sec.offsetLeft + scrollSnapValue) {
-            targetScroll = sec.offsetLeft
-        }
-    })
-
-    updateHeaderStyle()
-
 }, { passive: false })
 
 function update() {
@@ -35,6 +27,19 @@ function update() {
     if (maxScroll > 0) {
         progressFill.style.width = `${(targetScroll * 100) / maxScroll}%`
     }
+
+    Array.from(sections).forEach((sec, index) => {
+        if (targetScroll >= sec.offsetLeft - scrollSnapValue && targetScroll <= sec.offsetLeft + scrollSnapValue) {
+            targetScroll = sec.offsetLeft
+        }
+
+        if (targetScroll >= sec.offsetLeft && targetScroll < sec.offsetLeft + sec.offsetWidth) {
+            timelineProgressMarker[index].classList.add('timeline-progress-marker-active')
+        }
+        else {
+            timelineProgressMarker[index].classList.remove('timeline-progress-marker-active')
+        }
+    })
 
     requestAnimationFrame(update)
 }
@@ -47,13 +52,10 @@ window.addEventListener('resize', () => {
 
 function scrollToSection(_sectionIndex) {
     targetScroll = sections[_sectionIndex].offsetLeft
-    updateHeaderStyle()
 }
 
-function updateHeaderStyle() {
-    if (targetScroll >= sections[1].offsetLeft) {
-        header.style.opacity = 1
-    } else {
-        header.style.opacity = 0
-    }
-}
+Array.from(timelineProgressMarker).forEach((element, index) => {
+    element.addEventListener('click', () => {
+        scrollToSection(index)
+    })
+})

@@ -6,35 +6,79 @@
     <title>História dos Jogos</title>
     <link rel="icon" type="image/png" href="./assets/images/favicon.ico">
     <link rel="stylesheet" href="./styles/main.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="./scripts/main.js" defer></script>
 </head>
 <body>
     <header>
-        <nav>
-            <!-- Botões para levar para as Seções -->
-             <div class="nav-button">
-                <button onclick="scrollToSection(0)">Home</button>
-             </div>
-             <div class="nav-button">
-                <button onclick="scrollToSection(1)">Sec 1</button>
-             </div>
-             <div class="nav-button">
-                <button onclick="scrollToSection(2)">Sec 2</button>
-             </div>
-             <div class="nav-button">
-                <button onclick="scrollToSection(3)">Sec 3</button>
-             </div>
-             <div class="nav-button">
-                <button onclick="scrollToSection(4)">Sec 4</button>
-             </div>
-             <div class="nav-button">
-                <button onclick="scrollToSection(5)">Sec 5</button>
-             </div>
-        </nav>
-        <div class="progress-fill-container">
-            <div class="progress-fill"></div>
+        <div class="upper-header">
+            <div class="upper-header-left">
+                <i class="fa-solid fa-angle-right"></i>
+                <span>SISTEMA HISTORIA-DOS-GAMES v1.0</span>
+            </div>
+            <div class="upper-header-right">
+                <button class="user-button">
+                    <span>USUÁRIO: CONVIDADO </span>
+                    <i class="fa-solid fa-user"></i>
+                </button>
+            </div>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-fill-base">
+                <div class="timeline-fill-base-container">
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">BOOT</div>
+                    </div>
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">FÓSFORO</div>
+                    </div>
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">COMPUTADORES</div>
+                    </div>
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">ARCADES</div>
+                    </div>
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">PONG</div>
+                    </div>
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">CONSOLES</div>
+                    </div>
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">MODERNO</div>
+                    </div>
+                    <div class="timeline-progress-marker">
+                        <div class="timeline-progress-marker-circle"></div>
+                        <div class="timeline-progress-marker-title">LEGADO</div>
+                    </div>
+                    <div class="timeline-fill-progress"></div>
+                </div>
+            </div>
         </div>
     </header>
+    <div class="initial-bottom-bar">
+        <div class="initial-bottom-bar-left">
+            <i class="fa-solid fa-angle-right"></i>
+            <span>STATUS: AGUARDANDO COMANDO...</span>
+        </div>
+        <div class="initial-bottom-bar-right">
+            <div class="initial-bottom-bar-years">
+                <span>1958 / </span>
+                <i class="fa-solid fa-infinity"></i>
+            </div>
+            <div class="initial-bottom-bar-signal">
+                <i class="fa-solid fa-signal"></i>
+            </div>
+        </div>
+    </div>
     <main>
         <section>
             <div class="background-video-container">
@@ -42,43 +86,71 @@
                     <source src="./assets/images/computer-pong-animation.mp4" type="video/mp4">
                     Seu navegador não suporta vídeos em HTML5.
                 </video>
-                <div class="fillet-gradient"></div>
             </div>
-            <div class="section-container title-section-container">
-                <div class="title-scroll-warning-wrap">
-                    <div class="title-container">
-                        <h1 class="main-title">A História<br>dos <span>Games</span></h1>
-                        <h4 class="subtitle">De experimentos em laboratórios militares ao fenômeno cultural global.</h4>
+            <div class="section-container">
+                <div class="seciton-left">
+                    <div class="section-title">
+                        <div class="section-title-prequel">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>BEM-VINDO, EXPLORADOR</span>
+                        </div>
+                        <div class="section-main-title">
+                            <h1 class="pixel-title">A HISTÓRIA<br>DOS <span>GAMES</span></h1>
+                        </div>
                     </div>
-                    <div class="scroll-warning">
-                        <span>Role a página</span>
+                    <div class="section-description">
+                        <div class="section-box">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                        </div>
+                        <div class="section-box scroll-warning">
+                            <div>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <span>DESLIZE PARA COMEÇAR</span>
+                                <i class="fa-solid fa-angle-right disabled-icon"></i>
+                                <i class="fa-solid fa-angle-right disabled-icon"></i>
+                                <i class="fa-solid fa-angle-right disabled-icon"></i>
+                                <i class="fa-solid fa-angle-right disabled-icon"></i>
+                                <i class="fa-solid fa-angle-right disabled-icon"></i>
+                            </div>
+                            <i class="fa-solid fa-computer-mouse"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <section>
             <div class="section-container">
-                <h1>Como tudo começou</h1>
+                <h1>FÓSFORO</h1>
             </div>
         </section>
         <section>
             <div class="section-container">
-                <h1>SECTION 2</h1>
+                <h1>COMPUTADORES</h1>
             </div>
         </section>
         <section>
             <div class="section-container">
-                <h1>SECTION 3</h1>
+                <h1>ARCADES</h1>
             </div>
         </section>
         <section>
             <div class="section-container">
-                <h1>SECTION 4</h1>
+                <h1>PONG</h1>
             </div>
         </section>
         <section>
             <div class="section-container">
-                <h1>SECTION 5</h1>
+                <h1>CONSOLES</h1>
+            </div>
+        </section>
+        <section>
+            <div class="section-container">
+                <h1>MODERNO</h1>
+            </div>
+        </section>
+        <section>
+            <div class="section-container">
+                <h1>LEGADO</h1>
             </div>
         </section>
     </main>
