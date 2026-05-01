@@ -16,14 +16,6 @@
   font-style: normal;
 }
 
-/* Pixel Operator 8 BOLD (pixel - destaque) */
-@font-face {
-  font-family: 'PixelOperator8Bold';
-  src: url('../assets/fonts/PixelOperator8-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* IBM Plex Mono (legível - textos) */
 @font-face {
   font-family: 'IBMPlexMono';
@@ -75,6 +67,10 @@
     /* TEXTO COM GLOW */
     --text-glow: 0 0 6px var(--glow-medium),
                 0 0 12px var(--glow-soft);
+    
+    /* TÍTULO COM GLOW */
+    --title-text-glow: 0 0 8px var(--glow-medium),
+                0 0 12px var(--glow-medium);
 
     /* BOX COM GLOW */
     --glow-box: 0 0 5px var(--glow-soft),
@@ -160,11 +156,18 @@ header {
 }
 
 .upper-header {
-    color: var(--color-primary-dark);
-    font-size: 10px;
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    width: 100%;
+}
+
+.terminal-command {
+    color: var(--color-primary-dark);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
 }
 
 .user-button {
@@ -268,7 +271,7 @@ header {
 }
 
 /* BARRA INFERIOR DO COMEÇO */
-.initial-bottom-bar {
+.bottom-bar {
     z-index: 1;
     display: flex;
     justify-content: space-between;
@@ -290,13 +293,7 @@ header {
     color: var(--color-primary-dark);
 }
 
-.initial-bottom-bar-left {
-    span {
-        text-shadow: var(--text-glow);
-    }
-}
-
-.initial-bottom-bar-right {
+.bottom-bar-right {
     display: flex;
     gap: 2rem;
 }
@@ -323,11 +320,23 @@ header {
     font-weight: 700;
 }
 
-.section-main-title {
+/* .section-main-title {
     span {
         color: var(--color-primary);
         text-shadow: var(--text-glow);
     }
+} */
+
+
+
+.title-glow-text {
+    color: var(--color-primary);
+    text-shadow: var(--title-text-glow);
+}
+
+.glow-text {
+    color: var(--color-primary);
+    text-shadow: var(--text-glow);
 }
 
 .pixel-title {
@@ -346,9 +355,10 @@ header {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    max-width: 80%;
 }
 
-.section-box {
+.terminal-box {
     border: 1px solid var(--border-medium);
     padding: .5rem 1rem;
     /* font-family: 'VT323'; */
