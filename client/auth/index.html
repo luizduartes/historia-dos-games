@@ -13,7 +13,105 @@
 </head>
 <body>
     <main class="main-login">
-        <div class="login-box terminal-box"></div>
+        <div class="login-box terminal-box">
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon1"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon2"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon3"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon4"></i>
+
+            <div class="login-box-top">
+                <div class="terminal-command">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>ACESSO DE USUÁRIO</span>
+                </div>
+                <div class="terminal-command">
+                    <span>SISTEMA HISTORIA-DOS-GAMES v1.0</span>
+                </div>
+            </div>
+
+            <div class="terminal-line"></div>
+            
+            <div class="login-box-middle">
+                <div class="login-box-middle-left">
+                    <div class="login-box-middle-left-container">
+                        <i class="fa-solid fa-user login-box-middle-left-icon"></i>
+                        <div class="login-box-middle-left-container-text">
+                            <h3>USUÁRIO NÃO AUTENTICADO</h3>
+                            <span>Faça login para continuar a acessar o sistema.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-box-middle-right">
+                    <div class="terminal-command">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>ENTRAR NO SISTEMA</span>
+                    </div>
+                    <div class="terminal-dashed-line"></div>
+                    <form class="auth-form">
+                        <div class="input-field">
+                            <label for="username">USUÁRIO:</label>
+                            <div>
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" name="username" id="ipt_username" placeholder="DIGITE SEU USUÁRIO" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label for="senha">SENHA:</label>
+                            <div>
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="senha" id="ipt_senha" placeholder="DIGITE SUA SENHA">
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <div class="terminal-command">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <span>ACESSAR SISTEMA</span>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="terminal-dashed-line"></div>
+            
+            <div class="login-box-bottom">
+                <div class="terminal-command">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>NOVO POR AQUI? CRIE SUA CONTA PARA COMEÇAR.</span>
+                </div>
+                <button class="register-button" id="criarContaBtn">
+                    <span>CRIAR CONTA</span>
+                    <i class="fa-solid fa-user-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="down-login-box">
+            <div class="terminal-command">
+                <i class="fa-solid fa-angle-right"></i>
+                <span>PROTEGIDO POR CRIPTOGRAFIA DE 256 BITS</span>
+            </div>
+            <div class="terminal-command">
+                <i class="fa-solid fa-angle-right"></i>
+                <span>CONEXÃO SEGURA ESTABELECIDA</span>
+            </div>
+            <div class="terminal-loading">
+                <div class="terminal-loading-bar">
+                    <span>[</span>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <div class="terminal-loading-bar-cell"></div>
+                    <span>]</span>
+                </div>
+                <div class="terminal-loading-percentage">100%</div>
+            </div>
+        </div>
     </main>
 </body>
 </html>

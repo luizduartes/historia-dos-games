@@ -1,3 +1,5 @@
+import { changeToPage } from "./utils.js";
+
 // Configuração das Expressões Regulares (Regex)
 const regras = {
     // Email: padrão básico (texto@texto.dominio)
@@ -127,3 +129,7 @@ async function auth_register() {
 
     return false;
 }
+
+criarContaBtn.addEventListener('click', () => {
+    changeToPage('./register.html')
+})

@@ -36,7 +36,7 @@
     --glow-strong: rgba(124, 255, 178, 0.4);
 
     /* BACKGROUND */
-    --bg-main: #000300;       /* fundo geral */
+    --bg-main: #080a09;       /* fundo geral */
     --bg-section: #121614;    /* variação de seção */
     --bg-surface: #1A1F1C;    /* caixas / cards */
 
@@ -165,6 +165,8 @@ header {
 
 .terminal-command {
     color: var(--color-primary-dark);
+    text-shadow: var(--text-glow);
+    font-size: 14px;
     display: flex;
     align-items: center;
     gap: .4rem;
@@ -359,9 +361,9 @@ header {
 }
 
 .terminal-box {
-    border: 1px solid var(--border-medium);
+    border: 2px solid var(--border-medium);
     padding: .5rem 1rem;
-    /* font-family: 'VT323'; */
+    box-shadow: var(--glow-box);
 }
 
 .disabled-icon {
