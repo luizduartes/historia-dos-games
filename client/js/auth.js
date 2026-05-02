@@ -1,6 +1,8 @@
 import { changeToPage } from "./utils.js";
 const criarContaBtn = document.getElementById("criarContaBtn")
 const voltarLoginBtn = document.getElementById("voltarLoginBtn")
+const loginForm = document.getElementById("loginForm")
+const registerForm = document.getElementById("registerForm")
 
 if (criarContaBtn) {
     criarContaBtn.addEventListener('click', () => {
@@ -11,6 +13,20 @@ if (criarContaBtn) {
 if (voltarLoginBtn) {
     voltarLoginBtn.addEventListener('click', () => {
         changeToPage('./index.html')
+    })
+}
+
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        auth_login()
+    })
+}
+
+if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        auth_register()
     })
 }
 
@@ -134,7 +150,7 @@ async function auth_register() {
 
         if (resposta.ok) {
             exibirMensagem("Usuário cadastrado com sucesso!", "#00F5FF");
-            setTimeout(() => { window.location = "login.html"; }, 2000);
+            setTimeout(() => { changeToPage('./index.html') }, 2000);
         } else {
             throw new Error();
         }
