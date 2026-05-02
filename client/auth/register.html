@@ -12,8 +12,93 @@
     <script src="../js/auth.js" type="module" defer></script>
 </head>
 <body>
-    <main>
-        <div class="login-box terminal-box"></div>
+    <main class="main-login">
+        <div class="login-box terminal-box register-box">
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon1"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon2"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon3"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon4"></i>
+
+            <div class="login-box-top">
+                <div class="terminal-command">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>CRIAR CONTA DE USUÁRIO</span>
+                </div>
+                <div class="terminal-command">
+                    <span>SISTEMA HISTGAMES v1.0</span>
+                </div>
+            </div>
+
+            <div class="terminal-line"></div>
+            
+            <div class="login-box-middle">
+                <div class="login-box-middle-left">
+                    <div class="login-box-middle-left-container">
+                        <i class="fa-solid fa-user login-box-middle-left-icon"></i>
+                        <div class="login-box-middle-left-container-text">
+                            <h3>NOVA CONTA</h3>
+                            <span>Preencha os campos para criar seu perfil e acessar o sistema Histgames.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-box-middle-right">
+                    <div class="terminal-command">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>PREENCHA OS CAMPOS</span>
+                    </div>
+                    <div class="terminal-dashed-line"></div>
+                    <form class="auth-form">
+                        <div class="input-field">
+                            <label for="username">USUÁRIO:</label>
+                            <div>
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" name="username" id="ipt_username" placeholder="DIGITE SEU USUÁRIO" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label for="email">EMAIL:</label>
+                            <div>
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" name="email" id="ipt_email" placeholder="DIGITE SEU E-MAIL" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label for="senha">SENHA:</label>
+                            <div>
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="senha" id="ipt_senha" placeholder="DIGITE SUA SENHA">
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label for="confirmar_senha">CONFIRMAR SENHA:</label>
+                            <div>
+                                <i class="fa-solid fa-lock"></i>
+                                <input type="password" name="confirmar_senha" id="ipt_confirmar_senha" placeholder="CONFIRME SUA SENHA">
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-button">
+                            <div class="terminal-command">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <span>CRIAR CONTA</span>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="terminal-dashed-line"></div>
+            
+            <div class="login-box-bottom">
+                <div class="terminal-command">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>JÁ POSSUI CONTA?</span>
+                </div>
+                <button class="register-button" id="voltarLoginBtn">
+                    <span>VOLTAR PARA LOGIN</span>
+                    <i class="fa-solid fa-user-plus"></i>
+                </button>
+            </div>
+        </div>
     </main>
 </body>
 </html>

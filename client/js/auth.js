@@ -1,4 +1,19 @@
 import { changeToPage } from "./utils.js";
+const criarContaBtn = document.getElementById("criarContaBtn")
+const voltarLoginBtn = document.getElementById("voltarLoginBtn")
+
+if (criarContaBtn) {
+    criarContaBtn.addEventListener('click', () => {
+        changeToPage('./register.html')
+    })
+}
+
+if (voltarLoginBtn) {
+    voltarLoginBtn.addEventListener('click', () => {
+        changeToPage('./index.html')
+    })
+}
+
 
 // Configuração das Expressões Regulares (Regex)
 const regras = {
@@ -129,7 +144,3 @@ async function auth_register() {
 
     return false;
 }
-
-criarContaBtn.addEventListener('click', () => {
-    changeToPage('./register.html')
-})

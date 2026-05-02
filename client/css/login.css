@@ -15,6 +15,7 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--bg-main);
+    max-height: 500px;
 }
 
 .login-box-top {
@@ -70,14 +71,15 @@
     align-items: center;
     text-align: center;
     gap: .5rem;
-
+    
     h3 {
         font-family: 'PixelOperator';
         font-size: 26px;
     }
-
+    
     span {
         font-size: 14px;
+        padding: 0 2rem;
     }
 }
 
@@ -151,7 +153,7 @@
         }
         
         input::placeholder {
-            color: var(--color-primary);
+            color: color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, 0) 70%);
         }
 
         input:focus {
@@ -254,4 +256,18 @@
     height: 1px;
     border-top: 1px dashed var(--color-primary-dark);
     margin: .5rem auto;
+}
+
+/* ESTILIZAÇÃO ESPECÍFICA DA PÁGINA DE CADASTRO */
+.register-box {
+    height: 95%;
+    max-height: 680px;
+
+    .auth-form {
+        gap: 1rem;
+
+        .input-field {
+            height: 16%;
+        }
+    }
 }
