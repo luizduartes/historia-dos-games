@@ -43,6 +43,12 @@ const regras = {
     senha: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,30}$/
 };
 
+// const errorInputMessages = {
+//     email: "E-mail: digite um e-mail válido (ex: nome@email.com)",
+//     username: "Username: use de 3 a 15 caracteres (letras, números ou '_')",
+//     senha: "Senha: use de 8 a 30 caracteres, com letra, número e símbolo"
+// }
+
 function exibirMensagem(texto, cor = "#00F5FF") {
     const div = document.getElementById("div_mensagem");
     if (div) {

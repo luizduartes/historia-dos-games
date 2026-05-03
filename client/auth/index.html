@@ -48,18 +48,28 @@
                     </div>
                     <div class="terminal-dashed-line"></div>
                     <form class="auth-form" id="loginForm">
-                        <div class="input-field">
-                            <label for="email">EMAIL:</label>
-                            <div>
-                                <i class="fa-solid fa-envelope"></i>
-                                <input type="email" name="email" id="ipt_email" placeholder="DIGITE SEU E-MAIL" autocomplete="off">
+                        <div class="input-field-wrapper">
+                            <div class="input-field">
+                                <label for="email">EMAIL:</label>
+                                <div class="input-field-input">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <input type="email" name="email" id="ipt_email" placeholder="DIGITE SEU E-MAIL" autocomplete="off">
+                                </div>
+                                <div class="input-field-warning">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    <span class="input-field-warning-message">E-mail: digite um e-mail válido (ex: nome@email.com)</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="input-field">
-                            <label for="senha">SENHA:</label>
-                            <div>
-                                <i class="fa-solid fa-lock"></i>
-                                <input type="password" name="senha" id="ipt_senha" placeholder="DIGITE SUA SENHA">
+                            <div class="input-field">
+                                <label for="senha">SENHA:</label>
+                                <div class="input-field-input">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input type="password" name="senha" id="ipt_senha" placeholder="DIGITE SUA SENHA">
+                                </div>
+                                <div class="input-field-warning">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    <span class="input-field-warning-message">Senha: use de 8 a 30 caracteres</span>
+                                </div>
                             </div>
                         </div>
                         <button type="submit" class="submit-button">

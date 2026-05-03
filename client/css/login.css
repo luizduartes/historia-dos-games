@@ -9,13 +9,16 @@
 .login-box {
     position: relative;
     width: 70%;
+    min-width: 780px;
+    max-width: 900px;
     height: 75%;
+    max-height: 500px;
+    min-height: 440px;
     border: 2px solid var(--color-primary-dark);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--bg-main);
-    max-height: 500px;
 }
 
 .login-box-top {
@@ -60,8 +63,11 @@
 }
 
 .login-box-middle-right {
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--border-medium);
     width: 65%;
+    padding: .5rem 1rem;
 }
 
 .login-box-middle-left-container-text {
@@ -83,15 +89,11 @@
     }
 }
 
-.login-box-middle-right {
-    padding: .5rem 1rem;
-}
-
 .auth-form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90%;
+    flex-grow: 1;
     gap: 1.5rem;
     justify-content: center;
 
@@ -103,6 +105,7 @@
         align-items: center;
         padding: 1rem;
         cursor: pointer;
+        flex-shrink: 0;
 
         div {
             gap: 1.5rem;
@@ -120,17 +123,24 @@
     }
 }
 
+.input-field-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    justify-content: center;
+}
+
 .input-field {
     display: flex;
     flex-direction: column;
     gap: .3rem;
-    height: 25%;
+    height: max-content;
 
-    div {
+    .input-field-input {
         border: 1px solid var(--border-medium);
         display: flex;
         align-items: center;
-        height: 100%;
+        height: 40px;
         
         i {
             border-right: 1px solid var(--border-medium);
@@ -139,10 +149,10 @@
             padding: .5rem .75rem;
             display: flex;
             align-items: center;
+            flex-shrink: 0;
         }
         
         input {
-            width: 92%;
             height: 100%;
             padding: .5rem .75rem;
             background-color: var(--bg-main);
@@ -150,6 +160,7 @@
             color: var(--color-primary);
             font-family: 'IBMPlexMono';
             font-size: 16px;
+            flex-grow: 1;
         }
         
         input::placeholder {
@@ -159,6 +170,26 @@
         input:focus {
             outline: none;
         }
+    }
+}
+
+.input-field-warning {
+    /* opacity: 0; */
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    i {
+        font-size: 14px;
+        box-shadow: var(--glow-box);
+    }
+
+    .input-field-warning-message {
+        font-size: 12px;
+        color: var(--color-primary-dark);
     }
 }
 
@@ -249,6 +280,7 @@
     height: 1px;
     border-top: 1px solid var(--color-primary-dark);
     margin: .5rem auto;
+    flex-shrink: 0
 }
 
 .terminal-dashed-line {
@@ -256,18 +288,12 @@
     height: 1px;
     border-top: 1px dashed var(--color-primary-dark);
     margin: .5rem auto;
+    flex-shrink: 0
 }
 
 /* ESTILIZAÇÃO ESPECÍFICA DA PÁGINA DE CADASTRO */
 .register-box {
-    height: 95%;
+    height: 98%;
     max-height: 680px;
-
-    .auth-form {
-        gap: 1rem;
-
-        .input-field {
-            height: 16%;
-        }
-    }
+    min-width: 880px;
 }

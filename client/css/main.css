@@ -170,6 +170,7 @@ header {
     display: flex;
     align-items: center;
     gap: .4rem;
+    flex-shrink: 0
 }
 
 .user-button {
