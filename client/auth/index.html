@@ -13,6 +13,48 @@
 </head>
 <body>
     <main class="main-login">
+
+        <div class="modal-warning-box" id="modal-warning-box-accept">
+            <div class="warning-box">
+                <div class="warning-box-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>ACESSO CONCEDIDO</span>
+                </div>
+                <div class="terminal-dashed-line"></div>
+                <div class="warning-box-content">
+                    <div class="warning-box-content-text">
+                        <span>USUÁRIO LOGADO COM SUCESSO!<br>ENTRANDO NO SISTEMA</span>
+                    </div>
+                    <div class="warning-box-loading">
+                        <span class="warning-box-loading-cell"></span>
+                        <span class="warning-box-loading-cell"></span>
+                        <span class="warning-box-loading-cell"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-warning-box" id="modal-warning-box-error">
+            <div class="warning-box">
+                <div class="warning-box-title">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>ERRO DE AUTENTICAÇÃO</span>
+                </div>
+                <div class="terminal-dashed-line"></div>
+                <div class="warning-box-content">
+                    <div class="warning-box-content-text">
+                        <span>USUÁRIO OU SENHA INCORRETO(S).<br>VERIFIQUE OS DADOS INFORMADOS E TENTE NOVAMENTE</span>
+                    </div>
+                    <button class="warning-box-button">
+                        <div class="terminal-command">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>OK</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="login-box terminal-box">
             <i class="fa-solid fa-chevron-left corner-icon corner-icon1"></i>
             <i class="fa-solid fa-chevron-left corner-icon corner-icon2"></i>
