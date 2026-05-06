@@ -49,17 +49,33 @@ const regras = {
 //     senha: "Senha: use de 8 a 30 caracteres, com letra, número e símbolo"
 // }
 
-function exibirMensagem(texto, cor = "#00F5FF") {
-    const div = document.getElementById("div_mensagem");
-    if (div) {
-        div.style.color = cor;
-        div.style.borderColor = cor;
-        div.innerText = texto;
-        div.style.opacity = 1;
+function showErrorMessage(title, message) {
+    const div = document.getElementById("modal-warning-box-error")
+    const divTitle = document.getElementById("modal-warning-box-error-title")
+    const divMessage = document.getElementById("modal-warning-box-error-message")
+    const divButton = document.getElementById("warning-box-button-error")
 
-        setTimeout(() => {
-            div.style.opacity = 0;
-        }, 6000);
+    if (div) {
+        div.style.display = 'block'
+        divTitle.innerHTML = title
+        divMessage.innerHTML = message
+
+        divButton.addEventListener('click', () => {
+            div.style.display = 'none'
+        })
+    }
+}
+
+function showAcceptMessage(title, message) {
+    const div = document.getElementById("modal-warning-box-accept")
+    const divTitle = document.getElementById("modal-warning-box-accept-title")
+    const divMessage = document.getElementById("modal-warning-box-accept-message")
+    const divButton = document.getElementById("warning-box-button")
+
+    if (div) {
+        div.style.display = 'block'
+        divTitle.innerHTML = title
+        divMessage.innerHTML = message
     }
 }
 
@@ -68,13 +84,13 @@ async function auth_login() {
     const senhaVar = ipt_senha.value;
 
     if (!emailVar || !senhaVar) {
-        exibirMensagem("Preencha todos os campos!", "#FF00FF");
+        showErrorMessage("ERRO DE AUTENTICAÇÃO", "PREENCHA TODOS OS CAMPOS PARA REALIZAR A AUTENTICAÇÃO")
         return false;
     }
 
     // Validação de formato de e-mail com Regex
     if (!regras.email.test(emailVar)) {
-        exibirMensagem("Formato de e-mail inválido!", "#FF00FF");
+        showErrorMessage("ERRO DE AUTENTICAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
         return false;
     }
 
@@ -94,14 +110,14 @@ async function auth_login() {
             sessionStorage.NOME_USUARIO = json.username;
             sessionStorage.ID_USUARIO = json.id;
 
-            exibirMensagem("Acesso concedido. Iniciando...", "#00F5FF");
+            showAcceptMessage("ACESSO CONCEDIDO", "USUÁRIO LOGADO COM SUCESSO!<br>ENTRANDO NO SISTEMA...")
 
-            setTimeout(() => { window.location = "/client"; }, 2000);
+            setTimeout(() => { window.location = "/client"; }, 3000);
         } else {
-            exibirMensagem("Credenciais incorretas.", "#FF00FF");
+            showErrorMessage("ERRO DE AUTENTICAÇÃO", "USUÁRIO OU SENHA INCORRETO(S).<br>VERIFIQUE OS DADOS INFORMADOS E TENTE NOVAMENTE")
         }
     } catch (erro) {
-        exibirMensagem("Erro na rede. Tente mais tarde.", "#FF00FF");
+        showErrorMessage("ERRO DE AUTENTICAÇÃO", "ERRO NA REDE.<br>TENTE NOVAMENTE MAIS TARDE")
     }
 
     return false;
@@ -115,31 +131,31 @@ async function auth_register() {
 
     // 1. Verificação de campos vazios
     if (!usernameVar || !emailVar || !senhaVar || !confirmarSenhaVar) {
-        exibirMensagem("Todos os campos são obrigatórios!", "#FF00FF");
+        showErrorMessage("ERRO DE VALIDAÇÃO", "TODOS OS CAMPOS SÃO OBRIGATÓRIOS")
         return false;
     }
 
     // 2. Validação do Username (Regex)
     if (!regras.username.test(usernameVar)) {
-        exibirMensagem("Username: 3-15 caracteres (letras, números ou _)", "#FF00FF");
+        showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
         return false;
     }
 
     // 3. Validação do Email (Regex)
     if (!regras.email.test(emailVar)) {
-        exibirMensagem("Insira um e-mail válido!", "#FF00FF");
+        showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
         return false;
     }
 
     // 4. Validação da Senha (Regex)
     if (!regras.senha.test(senhaVar)) {
-        exibirMensagem("Senha: Mín. 8 caracteres, com letra, número e símbolo (@$!%*?&)", "#FF00FF");
+        showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
         return false;
     }
 
     // 5. Confirmação de Senha
     if (senhaVar !== confirmarSenhaVar) {
-        exibirMensagem("As senhas não coincidem!", "#FF00FF");
+        showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
         return false;
     }
 
@@ -155,13 +171,13 @@ async function auth_register() {
         });
 
         if (resposta.ok) {
-            exibirMensagem("Usuário cadastrado com sucesso!", "#00F5FF");
+            showAcceptMessage("CADASTRO REALIZADO", "USUÁRIO CADASTRADO COM SUCESSO!<br>REDIRECIONANDO PARA LOGIN...")
             setTimeout(() => { changeToPage('./index.html') }, 2000);
         } else {
             throw new Error();
         }
     } catch (erro) {
-        exibirMensagem("Erro ao cadastrar. Username ou e-mail já existem?", "#FF00FF");
+        showErrorMessage("ERRO DE VALIDAÇÃO", "USERNAME OU E-MAIL JÁ EXISTEM?")
     }
 
     return false;
