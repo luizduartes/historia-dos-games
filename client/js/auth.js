@@ -49,6 +49,43 @@ const regras = {
 //     senha: "Senha: use de 8 a 30 caracteres, com letra, número e símbolo"
 // }
 
+function connectInputFieldWarning(field) {
+    const form = document.querySelector("form")
+    const inputField = document.getElementById(`ipt_${field}`)
+    const inputFieldWarning = document.getElementById(`input-field-warning-${field}`)
+
+    if (form && inputField && inputFieldWarning) {
+        inputFieldWarning.style.opacity = 1
+        
+        form.addEventListener('input', () => {
+            let inputValue = inputField.value
+
+            if (field == "confirmar_senha") {
+                console.log(inputField)
+                console.log(inputValue)
+                let senhaValue = document.getElementById("ipt_senha").value
+                console.log(senhaValue)
+
+                if (inputValue == senhaValue) {
+                    inputFieldWarning.style.opacity = 0
+                }
+                else {
+                    inputFieldWarning.style.opacity = 1
+                }
+            }
+            else {
+                if (regras[field].test(inputValue)) {
+                    inputFieldWarning.style.opacity = 0
+                }
+                else {
+                    inputFieldWarning.style.opacity = 1
+                }
+            }
+
+        })
+    }
+}
+
 function showErrorMessage(title, message) {
     const div = document.getElementById("modal-warning-box-error")
     const divTitle = document.getElementById("modal-warning-box-error-title")
@@ -90,6 +127,7 @@ async function auth_login() {
 
     // Validação de formato de e-mail com Regex
     if (!regras.email.test(emailVar)) {
+        connectInputFieldWarning("email")
         showErrorMessage("ERRO DE AUTENTICAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
         return false;
     }
@@ -129,34 +167,28 @@ async function auth_register() {
     const senhaVar = ipt_senha.value;
     const confirmarSenhaVar = ipt_confirmar_senha.value;
 
-    // 1. Verificação de campos vazios
     if (!usernameVar || !emailVar || !senhaVar || !confirmarSenhaVar) {
         showErrorMessage("ERRO DE VALIDAÇÃO", "TODOS OS CAMPOS SÃO OBRIGATÓRIOS")
         return false;
     }
 
-    // 2. Validação do Username (Regex)
-    if (!regras.username.test(usernameVar)) {
+    if (!regras.username.test(usernameVar) || !regras.email.test(emailVar) || !regras.senha.test(senhaVar) || senhaVar !== confirmarSenhaVar) {
         showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
-        return false;
-    }
 
-    // 3. Validação do Email (Regex)
-    if (!regras.email.test(emailVar)) {
-        showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
-        return false;
-    }
+        if (!regras.username.test(usernameVar)) {
+            connectInputFieldWarning("username")
+        }
+        if (!regras.email.test(emailVar)) {
+            connectInputFieldWarning("email")
+        }
+        if (!regras.senha.test(senhaVar)) {
+            connectInputFieldWarning("senha")
+        }
+        if (senhaVar !== confirmarSenhaVar) {
+            connectInputFieldWarning("confirmar_senha")
+        }
 
-    // 4. Validação da Senha (Regex)
-    if (!regras.senha.test(senhaVar)) {
-        showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
-        return false;
-    }
-
-    // 5. Confirmação de Senha
-    if (senhaVar !== confirmarSenhaVar) {
-        showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
-        return false;
+        return false
     }
 
     try {
