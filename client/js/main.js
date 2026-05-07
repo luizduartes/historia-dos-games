@@ -9,7 +9,7 @@ updateScroll()
 
 // Redirecionando usuário para a tela de Login
 loginButton.addEventListener('click', () => {
-    changeToPage('./auth')
+    changeToPage('./auth/login.html')
 })
 
 function updateUsernameOnPage() {

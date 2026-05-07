@@ -12,7 +12,7 @@ if (criarContaBtn) {
 
 if (voltarLoginBtn) {
     voltarLoginBtn.addEventListener('click', () => {
-        changeToPage('./index.html')
+        changeToPage('./login.html')
     })
 }
 
@@ -55,18 +55,24 @@ function connectInputFieldWarning(field) {
     const inputFieldWarning = document.getElementById(`input-field-warning-${field}`)
 
     if (form && inputField && inputFieldWarning) {
-        inputFieldWarning.style.opacity = 1
+        if (field == "confirmar_senha") {
+            let senhaValue = document.getElementById("ipt_senha").value
+
+            if (inputField.value != senhaValue) {
+                inputFieldWarning.style.opacity = 1
+            }
+        }
+        else {
+            if (!regras[field].test(inputField.value)) {
+                inputFieldWarning.style.opacity = 1
+            }
+        }
         
         form.addEventListener('input', () => {
-            let inputValue = inputField.value
-
             if (field == "confirmar_senha") {
-                console.log(inputField)
-                console.log(inputValue)
                 let senhaValue = document.getElementById("ipt_senha").value
-                console.log(senhaValue)
 
-                if (inputValue == senhaValue) {
+                if (inputField.value == senhaValue) {
                     inputFieldWarning.style.opacity = 0
                 }
                 else {
@@ -74,7 +80,7 @@ function connectInputFieldWarning(field) {
                 }
             }
             else {
-                if (regras[field].test(inputValue)) {
+                if (regras[field].test(inputField.value)) {
                     inputFieldWarning.style.opacity = 0
                 }
                 else {
@@ -175,18 +181,10 @@ async function auth_register() {
     if (!regras.username.test(usernameVar) || !regras.email.test(emailVar) || !regras.senha.test(senhaVar) || senhaVar !== confirmarSenhaVar) {
         showErrorMessage("ERRO DE VALIDAÇÃO", "ALGUNS CAMPOS CONTÊM ERROS.<br>POR FAVOR, VERIFIQUE E TENTE NOVAMENTE.")
 
-        if (!regras.username.test(usernameVar)) {
-            connectInputFieldWarning("username")
-        }
-        if (!regras.email.test(emailVar)) {
-            connectInputFieldWarning("email")
-        }
-        if (!regras.senha.test(senhaVar)) {
-            connectInputFieldWarning("senha")
-        }
-        if (senhaVar !== confirmarSenhaVar) {
-            connectInputFieldWarning("confirmar_senha")
-        }
+        connectInputFieldWarning("username")
+        connectInputFieldWarning("email")
+        connectInputFieldWarning("senha")
+        connectInputFieldWarning("confirmar_senha")
 
         return false
     }
