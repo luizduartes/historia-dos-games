@@ -277,22 +277,6 @@
     transform: rotateZ(-45deg);
 }
 
-.terminal-line {
-    width: 100%;
-    height: 1px;
-    border-top: 1px solid var(--color-primary-dark);
-    margin: .5rem auto;
-    flex-shrink: 0
-}
-
-.terminal-dashed-line {
-    width: 100%;
-    height: 1px;
-    border-top: 1px dashed var(--color-primary-dark);
-    margin: .5rem auto;
-    flex-shrink: 0
-}
-
 /* ESTILIZAÇÃO ESPECÍFICA DA PÁGINA DE CADASTRO */
 .register-box {
     height: 98%;
