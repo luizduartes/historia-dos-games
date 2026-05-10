@@ -65,17 +65,55 @@
         </div>
     </header>
     <div class="bottom-bar">
-        <div class="bottom-bar-left">
-            <i class="fa-solid fa-angle-right"></i>
-            <span>STATUS: AGUARDANDO COMANDO...</span>
-        </div>
-        <div class="bottom-bar-right">
-            <div class="bottom-bar-years">
-                <span>1958 / </span>
-                <i class="fa-solid fa-infinity"></i>
+        <div class="bottom-bar-content" id="welcome-bottom-bar-content">
+            <div class="welcome-bottom-bar-left">
+                <i class="fa-solid fa-angle-right"></i>
+                <span>STATUS: AGUARDANDO COMANDO...</span>
             </div>
-            <div class="bottom-bar-signal">
-                <i class="fa-solid fa-signal"></i>
+            <div class="welcome-bottom-bar-right">
+                <div class="welcome-bottom-bar-years">
+                    <span>1958 / </span>
+                    <i class="fa-solid fa-infinity"></i>
+                </div>
+                <div class="welcome-bottom-bar-signal">
+                    <i class="fa-solid fa-signal"></i>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar-content" id="navigation-bottom-bar-content">
+            <div class="navigation-bottom-bar-change-page">
+                <button class="bottom-bar-change-age-button">
+                    <div class="terminal-command">
+                        <i class="fa-solid fa-angle-left"></i>
+                        <span>ERA ANTERIOR</span>
+                    </div>
+                </button>
+                <span class="bottom-bar-change-page-indicator" id="bottom-bar-next-page-indicator">BOOT</span>
+            </div>
+            <div class="navigation-bottom-bar-middle">
+                <span>NAVEGANDO PELA HISTÓRIA...</span>
+                <div class="bottom-bar-age-indicator">
+                    <span>02 / 08</span>
+                    <div class="bottom-bar-age-indicator-progress">
+                        <div class="age-indicator-progress-cell age-indicator-progress-cell-fill"></div>
+                        <div class="age-indicator-progress-cell age-indicator-progress-cell-fill"></div>
+                        <div class="age-indicator-progress-cell"></div>
+                        <div class="age-indicator-progress-cell"></div>
+                        <div class="age-indicator-progress-cell"></div>
+                        <div class="age-indicator-progress-cell"></div>
+                        <div class="age-indicator-progress-cell"></div>
+                        <div class="age-indicator-progress-cell"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-bottom-bar-change-page">
+                <span class="bottom-bar-change-page-indicator" id="bottom-bar-next-page-indicator">COMPUTADORES</span>
+                <button class="bottom-bar-change-age-button">
+                    <div class="terminal-command">
+                        <span>PRÓXIMA ERA</span>
+                        <i class="fa-solid fa-angle-right"></i>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
