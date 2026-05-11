@@ -24,7 +24,6 @@ const bottomBarAgeIndicatorProgress = document.getElementById("bottom-bar-age-in
 const bottomBarAgeIndicatorProgressCells = Array.from(bottomBarAgeIndicatorProgress.children)
 const bottomBarPreviousPageIndicator = document.getElementById("bottom-bar-previous-page-indicator")
 const bottomBarNextPageIndicator = document.getElementById("bottom-bar-next-page-indicator")
-console.log(bottomBarAgeIndicatorProgressCells)
 
 let currentSection = 0
 
