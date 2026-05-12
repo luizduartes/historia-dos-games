@@ -91,7 +91,7 @@ Array.from(timelineProgressMarker).forEach((element, index) => {
 })
 
 function previousSection() {
-    if (currentSection > 0) {
+    if (currentSection > 1) {
         currentSection -= 1
         scrollToSection(currentSection)
         updateBottomBar()
@@ -110,7 +110,7 @@ function updateBottomBar() {
     const previousAgeName = ageNames[currentSection - 1]
     const nextAgeName = ageNames[currentSection + 1]
 
-    if (previousAgeName) {
+    if (previousAgeName && previousAgeName != 'BOOT') {
         bottomBarPreviousPageIndicator.innerText = ageNames[currentSection - 1]
         bottomBarPreviousPageIndicator.style.opacity = 1
         previousSectionButton.style.opacity = 1
@@ -128,10 +128,10 @@ function updateBottomBar() {
         nextSectionButton.style.opacity = 0
     }
 
-    bottomBarAgeIndicatorText.innerText = `0${currentSection + 1} / 0${sections.length}`
+    bottomBarAgeIndicatorText.innerText = `0${currentSection} / 0${sections.length - 1}`
 
     bottomBarAgeIndicatorProgressCells.forEach((cell, index) => {
-        if (index <= currentSection) {
+        if (index < currentSection) {
             cell.classList.add("age-indicator-progress-cell-fill")
         }
         else {
