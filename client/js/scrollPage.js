@@ -35,7 +35,8 @@ const scrollSnapValue = 90
 
 window.addEventListener('wheel', (event) => {
     event.preventDefault()
-    targetScroll += event.deltaY
+    let wheelScroll = event.deltaX || event.deltaY
+    targetScroll += wheelScroll
     const maxScroll = getMaxScroll()
     
     if (targetScroll < 0) targetScroll = 0
