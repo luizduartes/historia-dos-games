@@ -30,7 +30,6 @@ if (registerForm) {
     })
 }
 
-
 // Configuração das Expressões Regulares (Regex)
 const regras = {
     // Email: padrão básico (texto@texto.dominio)
@@ -42,12 +41,6 @@ const regras = {
     // Senha: Mínimo 8 caracteres, pelo menos uma letra, um número e um caractere especial
     senha: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,30}$/
 };
-
-// const errorInputMessages = {
-//     email: "E-mail: digite um e-mail válido (ex: nome@email.com)",
-//     username: "Username: use de 3 a 15 caracteres (letras, números ou '_')",
-//     senha: "Senha: use de 8 a 30 caracteres, com letra, número e símbolo"
-// }
 
 function connectInputFieldWarning(field) {
     const form = document.querySelector("form")

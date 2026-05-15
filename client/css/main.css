@@ -629,3 +629,41 @@ header {
     justify-content: space-around;
     flex: 1;
 }
+
+/* BOXES */
+.decoration-terminal-box {
+    position: relative;
+
+    .corner-icon {
+        position: absolute;
+        color: var(--color-primary-dark);
+    }
+
+    .corner-icon1 {
+        left: 2px;
+        top: -1px;
+        transform: rotateZ(45deg);
+    }
+    .corner-icon2 {
+        right: 2px;
+        top: -1px;
+        transform: rotateZ(135deg);
+    }
+    .corner-icon3 {
+        right: 2px;
+        bottom: -1px;
+        transform: rotateZ(-135deg);
+    }
+    .corner-icon4 {
+        left: 2px;
+        bottom: -1px;
+        transform: rotateZ(-45deg);
+    }
+}
+
+.centralized-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

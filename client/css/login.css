@@ -1,13 +1,9 @@
+/* MAIN */
 .main-login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 1rem;
 }
 
 .login-box {
-    position: relative;
     width: 70%;
     min-width: 780px;
     max-width: 900px;
@@ -249,32 +245,6 @@
 
 .terminal-loading-percentage {
     font-size: 16px;
-}
-
-.corner-icon {
-    position: absolute;
-    color: var(--color-primary-dark);
-}
-
-.corner-icon1 {
-    left: 2px;
-    top: -1px;
-    transform: rotateZ(45deg);
-}
-.corner-icon2 {
-    right: 2px;
-    top: -1px;
-    transform: rotateZ(135deg);
-}
-.corner-icon3 {
-    right: 2px;
-    bottom: -1px;
-    transform: rotateZ(-135deg);
-}
-.corner-icon4 {
-    left: 2px;
-    bottom: -1px;
-    transform: rotateZ(-45deg);
 }
 
 /* ESTILIZAÇÃO ESPECÍFICA DA PÁGINA DE CADASTRO */
