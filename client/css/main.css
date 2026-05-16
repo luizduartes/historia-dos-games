@@ -162,11 +162,17 @@ header {
 .terminal-command {
     color: var(--color-primary-dark);
     text-shadow: var(--text-glow);
-    font-size: clamp(12px, 1.02vw, 16px);
+    font-size: clamp(12px, 1.08vw, 20px);
     display: flex;
     align-items: center;
     gap: .4rem;
     flex-shrink: 0
+}
+
+.terminal-text {
+    color: var(--color-primary-dark);
+    text-shadow: var(--text-glow);
+    font-size: clamp(12px, 1.08vw, 20px);
 }
 
 .user-button {
