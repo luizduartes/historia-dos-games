@@ -182,17 +182,14 @@
 
     i {
         font-size: 26px;
+        color: var(--color-primary);
     }
-
-    /* span {
-        font-size: 22px;
-        font-weight: 1000;
-    } */
 
     .stat-card-content-text {
         font-size: 28px;
         font-family: 'PixelOperator';
         font-weight: 1000;
+        color: var(--color-primary);
     }
 }
 
@@ -253,13 +250,14 @@
     flex: 1;
 }
 
-.profile-box-main-content-bottom {
+/* .profile-box-main-content-bottom {
     
-}
+} */
 
 .window-recent-performance {
     display: flex;
     flex-direction: column;
+    flex: 0.8;
 }
 
 .window-results-distribution {
@@ -337,6 +335,56 @@
         color: var(--color-primary);
         font-size: 20px;
     }
+}
+
+.window-highlighted-achievements {
+    display: flex;
+    flex-direction: column;
+}
+
+.achievements-card-wrapper {
+    display: flex;
+    gap: 1rem;
+    flex: 1;
+    padding: .5rem 0;
+}
+
+.achievements-card {
+    flex: 1;
+    border: 1px solid var(--border-medium);
+    border-radius: 4px;
+    height: 100%;
+    padding: .5rem .25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+
+.achievements-card-icon {
+    font-size: 40px;
+    color: var(--color-primary);
+}
+
+.achievements-card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .2rem;
+}
+
+.achievements-card-text-title {
+    font-family: 'PixelOperator';
+    font-size: 20px;
+    font-weight: 1000;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.achievements-card-text-description {
+    font-size: 11px;
+    text-align: center;
+    color: color-mix(in srgb, var(--color-primary-dark), var(--bg-main) 20%);
 }
 
 /* PROFILE BOX - CONTEÚDO INFERIOR DA BOX (CONTENDO BOTÕES DE NAVEGAÇÃO) */
