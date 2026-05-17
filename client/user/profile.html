@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/profile.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/charts.js" type="module" defer></script>
 </head>
 <body>
     <main class="centralized-main main-profile">
@@ -235,9 +238,49 @@
                 <div class="profile-box-main-content-part profile-box-main-content-bottom">
                     <div class="profile-box-main-content-window window-recent-performance">
                         <span>DESEMPENHO RECENTE <span class="window-obs">(ÚLTIMAS 20 PARTIDAS)</span></span>
+                        <div class="chart-window-content">
+                            <div class="chart-container recent-performance-chart-container">
+                                <canvas id="chartRecentPerformance"></canvas>
+                            </div>
+                            <div class="chart-window-content-legends">
+                                <div class="chart-window-content-legend-cell">
+                                    <div class="legend-cell-indicator legend-cell-indicator-victory"></div>
+                                    <span>VITÓRIA</span>
+                                </div>
+                                <div class="chart-window-content-legend-cell">
+                                    <div class="legend-cell-indicator legend-cell-indicator-defeat"></div>
+                                    <span>DERROTA</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="profile-box-main-content-window window-results-distribution">
                         <span>DISTRIBUIÇÃO DE RESULTADOS</span>
+                        <div class="chart-window-content chart-window-content-results-distribution">
+                            <div class="chart-container results-distribution-chart-container">
+                                <canvas id="chartResultsDistribution"></canvas>
+                                <div class="results-distribution-chart-legend">
+                                    <span>165</span>
+                                    <span>TOTAL</span>
+                                </div>
+                            </div>
+                            <div class="chart-window-content-legends chart-window-content-legends-results-distribution">
+                                <div class="chart-window-content-legend-cell">
+                                    <div class="legend-cell-indicator legend-cell-indicator-victory"></div>
+                                    <div>
+                                        <span>VITÓRIA<br></span>
+                                        <span>77.6% (128)</span>
+                                    </div>
+                                </div>
+                                <div class="chart-window-content-legend-cell">
+                                    <div class="legend-cell-indicator legend-cell-indicator-defeat"></div>
+                                    <div>
+                                        <span>DERROTA<br></span>
+                                        <span>22.4% (37)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="profile-box-main-content-window window-highlighted-achievements">
                         <span>CONQUISTAS EM DESTAQUE</span>

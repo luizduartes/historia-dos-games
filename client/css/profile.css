@@ -2,13 +2,15 @@
 .profile-box {
     width: 96%;
     height: 96%;
+    max-width: 1380px;
+    max-height: 670px;
     display: flex;
     flex-direction: column;
 
     /* ESTILIZAÇÃO DE TODOS OS TEXTOS */
     color: var(--color-primary-dark);
     text-shadow: var(--text-glow);
-    font-size: clamp(12px, 1.08vw, 20px);
+    font-size: clamp(12px, 1.08vw, 18px);
 }
 
 /* PROFILE BOX - TOP (TOPO DA JANELA) */
@@ -247,19 +249,94 @@
     }
 }
 
-
-
-
-
-
-
-
 .profile-box-main-content-middle {
     flex: 1;
 }
 
 .profile-box-main-content-bottom {
     
+}
+
+.window-recent-performance {
+    display: flex;
+    flex-direction: column;
+}
+
+.window-results-distribution {
+    display: flex;
+    flex-direction: column;
+    flex: 0.7;
+}
+
+.chart-window-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.chart-container {
+    width: 100%;
+    height: 85%;
+}
+
+.chart-window-content-legends {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chart-window-content-legend-cell {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+
+.legend-cell-indicator {
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--border-medium);
+}
+
+.legend-cell-indicator-victory {
+    background-color: var(--color-primary);
+}
+
+.legend-cell-indicator-defeat {
+    background-color: var(--accent-disabled);
+}
+
+.chart-window-content-results-distribution {
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+}
+
+.chart-window-content-legends-results-distribution {
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.results-distribution-chart-container {
+    position: relative;
+    width: 50%;
+}
+
+.results-distribution-chart-legend {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 1000;
+
+    span:nth-child(1) {
+        color: var(--color-primary);
+        font-size: 20px;
+    }
 }
 
 /* PROFILE BOX - CONTEÚDO INFERIOR DA BOX (CONTENDO BOTÕES DE NAVEGAÇÃO) */
