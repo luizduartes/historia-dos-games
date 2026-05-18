@@ -5,3 +5,81 @@
     width: 500px;
     height: 500px;
 }
+
+.game-box-main-content {
+    flex-direction: row;
+}
+
+/* PARTE DA DIREITA DA JANELA (AO LADO DO JOGO PONG) */
+.game-box-main-content-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 .5rem;
+    font-size: 14px;
+}
+
+.game-terminal-box {
+    border-radius: 6px;
+}
+
+.game-score-container {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 1rem;
+}
+
+.game-score-points-separator {
+    font-weight: 1000;
+    font-family: 'PixelOperator';
+    font-size: 30px;
+}
+
+.game-score-points {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .game-score-points-number {
+        color: var(--color-primary);
+        font-weight: 1000;
+        font-family: 'PixelOperator';
+        font-size: 50px;
+    }
+}
+
+.controllers-grid {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 1rem;
+}
+
+.controller-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.controller-icons-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+}
+
+.key-icon {
+    border: 1px solid var(--color-primary-dark);
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controller-legend {
+    display: flex;
+    align-items: center;
+}

@@ -45,8 +45,69 @@
 
             <div class="terminal-line"></div>
 
-            <div class="profile-box-main-content">
+            <div class="profile-box-main-content game-box-main-content">
                 <canvas id="pong-canvas" width="500" height="500"></canvas>
+
+                <div class="game-box-main-content-right">
+                    <div class="terminal-box game-terminal-box">
+                        <span>PLACAR</span>
+                        <div class="terminal-dashed-line"></div>
+                        <div class="game-score-container">
+                            <div class="game-score-points">
+                                <span class="game-score-points-text">VOCÊ</span>
+                                <span class="game-score-points-number">03</span>
+                            </div>
+                            <span class="game-score-points-separator"> : </span>
+                            <div class="game-score-points">
+                                <span class="game-score-points-number">02</span>
+                                <span class="game-score-points-text">CPU</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="terminal-box game-terminal-box">
+                        <span>CONTROLES</span>
+                        <div class="controllers-grid">
+
+                            <div class="controller-icons-wrapper">
+                                <div class="key-icon">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </div>
+                                <span> / </span>
+                                <div class="key-icon">
+                                    <span>A</span>
+                                </div>
+                            </div>
+
+                            <div class="controller-legend">
+                            <span>MOVER PARA A ESQUERDA</span>
+                            </div>
+
+                        <div class="controller-icons-wrapper">
+                            <div class="key-icon">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                            <span> / </span>
+                            <div class="key-icon">
+                                <span>D</span>
+                            </div>
+                        </div>
+
+                        <div class="controller-legend">
+                            <span>MOVER PARA A DIREITA</span>
+                        </div>
+
+                        <div class="controller-icons-wrapper">
+                            <div class="key-icon">
+                                <span>ESC</span>
+                            </div>
+                        </div>
+
+                        <div class="controller-legend">
+                            <span>PAUSAR O JOGO</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="terminal-dashed-line"></div>
@@ -65,10 +126,6 @@
                         <i class="fa-solid fa-ranking-star"></i>
                         <span>RANKS DO PONG</span>
                     </button>
-                    <!-- <button class="profile-box-bottom-button">
-                        <i class="fa-solid fa-play"></i>
-                        <span>JOGAR O PONG!</span>
-                    </button> -->
                 </div>
             </div>
         </div>
