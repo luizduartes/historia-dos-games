@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Jogos - Login</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/pong-game.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../js/pong-game.js" type="module" defer></script>
+</head>
+<body>
+    <main class="centralized-main">
+        <div class="terminal-box decoration-terminal-box">
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon1"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon2"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon3"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon4"></i>
+
+            <div class="profile-box-top">
+                <div class="profile-box-top-left">
+                    <div class="terminal-command">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>PONG!</span>
+                    </div>
+                </div>
+                <div class="profile-box-top-right">
+                    <span class="terminal-text">SISTEMA HISTGAMES v1.0</span>
+                    <div class="terminal-box-top-buttons">
+                        <button class="terminal-box-top-button terminal-box-top-disabled-button">
+                            <i class="fa-solid fa-window-minimize"></i>
+                        </button>
+                        <button class="terminal-box-top-button terminal-box-top-disabled-button">
+                            <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                        </button>
+                        <button class="terminal-box-top-button">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal-line"></div>
+
+            <div class="profile-box-main-content">
+                <canvas id="pong-canvas" width="500" height="500"></canvas>
+            </div>
+
+            <div class="terminal-dashed-line"></div>
+
+            <div class="profile-box-bottom">
+                <div class="terminal-command">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>JOGUE PARA DOMINAR O PONG.</span>
+                </div>
+                <div class="profile-box-bottom-buttons">
+                    <button class="profile-box-bottom-button">
+                        <i class="fa-solid fa-house"></i>
+                        <span>VOLTAR PARA AS ERAS</span>
+                    </button>
+                    <button class="profile-box-bottom-button">
+                        <i class="fa-solid fa-ranking-star"></i>
+                        <span>RANKS DO PONG</span>
+                    </button>
+                    <!-- <button class="profile-box-bottom-button">
+                        <i class="fa-solid fa-play"></i>
+                        <span>JOGAR O PONG!</span>
+                    </button> -->
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
