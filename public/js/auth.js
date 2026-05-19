@@ -1,20 +1,6 @@
 import { changeToPage } from "./utils.js";
-const criarContaBtn = document.getElementById("criarContaBtn")
-const voltarLoginBtn = document.getElementById("voltarLoginBtn")
 const loginForm = document.getElementById("loginForm")
 const registerForm = document.getElementById("registerForm")
-
-if (criarContaBtn) {
-    criarContaBtn.addEventListener('click', () => {
-        changeToPage('./register.html')
-    })
-}
-
-if (voltarLoginBtn) {
-    voltarLoginBtn.addEventListener('click', () => {
-        changeToPage('./login.html')
-    })
-}
 
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
@@ -195,7 +181,7 @@ async function auth_register() {
 
         if (resposta.ok) {
             showAcceptMessage("CADASTRO REALIZADO", "USUÁRIO CADASTRADO COM SUCESSO!<br>REDIRECIONANDO PARA LOGIN...")
-            setTimeout(() => { changeToPage('./index.html') }, 2000);
+            setTimeout(() => { changeToPage('./login.html') }, 2000);
         } else {
             throw new Error();
         }
