@@ -48,7 +48,10 @@
             <div class="terminal-line"></div>
 
             <div class="profile-box-main-content game-box-main-content">
-                <canvas id="pong-canvas" width="500" height="500"></canvas>
+                <div class="pong-canvas-container">
+                    <canvas id="pong-canvas" width="500" height="500"></canvas>
+                    <button class="profile-box-bottom-button" id="playButton">PLAY</button>
+                </div>
 
                 <div class="game-box-main-content-right">
                     <div class="terminal-box game-terminal-box">
@@ -57,11 +60,11 @@
                         <div class="game-score-container">
                             <div class="game-score-points">
                                 <span class="game-score-points-text">VOCÊ</span>
-                                <span class="game-score-points-number">03</span>
+                                <span class="game-score-points-number" id="playerScoreText">00</span>
                             </div>
                             <span class="game-score-points-separator"> : </span>
                             <div class="game-score-points">
-                                <span class="game-score-points-number">02</span>
+                                <span class="game-score-points-number" id="cpuScoreText">00</span>
                                 <span class="game-score-points-text">CPU</span>
                             </div>
                         </div>
@@ -105,8 +108,17 @@
                         </div>
 
                         <div class="controller-legend">
-                            <span>PAUSAR O JOGO</span>
+                            <span>PAUSAR OU RETOMAR O JOGO</span>
                         </div>
+                        </div>
+                    </div>
+                    <div class="terminal-box game-terminal-box">
+                        <span>DICA</span>
+                        <div class="controllers-grid">
+
+                            <i class="fa-solid fa-trophy hint-icon"></i>
+                            <span>Antecipe os movimentos do adversário<br>e mantenha o controle da partida!</span>
+
                         </div>
                     </div>
                 </div>
