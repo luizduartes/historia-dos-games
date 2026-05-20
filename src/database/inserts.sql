@@ -1,30 +1,212 @@
-INSERT INTO usuario (username, email, senha) VALUES 
-('PlayerUm', 'player1@email.com', 'senha123'),
-('RetroGamer', 'retro@email.com', 'admin70'),
-('DevMaster', 'dev@email.com', 'root00');
+USE historia_dos_games;
 
-INSERT INTO conquista (nome, descricao, requisito) VALUES 
-('Historiador', 'Chegou ao final do scroll da história.', 'scroll_completo'),
-('Mestre do Pong', 'Venceu a CPU por mais de 5 pontos de diferença.', 'vitoria_esmagadora'),
-('Veterano', 'Realizou mais de 10 partidas no simulador.', '10_partidas');
+-- =========================================
+-- INSERTS DE CONQUISTAS
+-- =========================================
 
-INSERT INTO partida (id_usuario, pontuacao_player, pontuacao_cpu, duracao_segundos) VALUES 
-(1, 5, 2, 45), -- Vitória do PlayerUm
-(1, 1, 5, 30), -- Derrota do PlayerUm
-(2, 5, 0, 25), -- Vitória esmagadora do RetroGamer
-(3, 3, 5, 80); -- Derrota do DevMaster
+INSERT INTO conquista (nome, descricao, tipo, valor) VALUES
+('Primeira Vitória', 'Vença sua primeira partida.', 'VITORIA', 1),
+('Iniciante', 'Vença 5 partidas.', 'VITORIA', 5),
+('Veterano', 'Vença 25 partidas.', 'VITORIA', 25),
+('Lenda do Pong', 'Vença 100 partidas.', 'VITORIA', 100),
 
-INSERT INTO usuario_conquista (id_usuario, id_conquista) VALUES 
-(1, 1), -- PlayerUm leu a história
-(2, 1), -- RetroGamer leu a história
-(2, 2); -- RetroGamer ganhou a conquista de mestre
+('Sequência Quente', 'Alcance 3 vitórias seguidas.', 'WIN_STREAK', 3),
+('Dominando Tudo', 'Alcance 10 vitórias seguidas.', 'WIN_STREAK', 10),
+('Rei do Pong', 'Alcance 20 vitórias seguidas.', 'WIN_STREAK', 20),
 
-SELECT u.username, p.pontuacao_player 
-FROM usuario u 
-JOIN partida p ON u.id = p.id_usuario 
-ORDER BY p.pontuacao_player DESC;
+('Maratonista', 'Faça uma partida durar mais de 400 segundos.', 'DURACAO', 400),
+('Velocista', 'Vença uma partida em menos de 40 segundos.', 'DURACAO', 40),
 
-SELECT u.username, COUNT(uc.id_conquista) as total_conquistas
-FROM usuario u
-LEFT JOIN usuario_conquista uc ON u.id = uc.id_usuario
-GROUP BY u.id;
+('Persistente', 'Jogue 50 partidas.', 'PARTIDAS', 50),
+('Arcade Master', 'Jogue 200 partidas.', 'PARTIDAS', 200),
+
+('Humilhação', 'Vença a CPU por 5x0.', 'PLACAR', 5);
+
+-- =========================================
+-- INSERTS DE USUÁRIOS
+-- =========================================
+
+INSERT INTO usuario
+(username, email, senha, criado_em, vitorias, derrotas, win_streak_atual, melhor_win_streak)
+VALUES
+
+('pixelKing', 'pixelking@gmail.com', '12345678', '2025-01-12 14:22:11', 128, 37, 7, 18),
+('retroWave', 'retrowave@gmail.com', '12345678', '2025-01-15 09:12:54', 93, 52, 4, 11),
+('pongMaster', 'pongmaster@gmail.com', '12345678', '2025-01-20 19:45:02', 201, 48, 15, 27),
+('cpuDestroyer', 'cpudestroyer@gmail.com', '12345678', '2025-01-28 11:33:45', 312, 77, 21, 39),
+('arcadeHero', 'arcadehero@gmail.com', '12345678', '2025-02-01 08:20:18', 54, 41, 2, 8),
+
+('greenTerminal', 'greenterminal@gmail.com', '12345678', '2025-02-03 15:44:10', 72, 61, 1, 5),
+('oldSchool', 'oldschool@gmail.com', '12345678', '2025-02-08 17:32:00', 145, 98, 6, 14),
+('neonPlayer', 'neonplayer@gmail.com', '12345678', '2025-02-10 13:19:51', 81, 32, 5, 9),
+('bitCrusher', 'bitcrusher@gmail.com', '12345678', '2025-02-12 20:18:33', 39, 28, 0, 4),
+('gameOver', 'gameover@gmail.com', '12345678', '2025-02-15 10:07:22', 18, 42, 0, 2),
+
+('pongLegend', 'ponglegend@gmail.com', '12345678', '2025-02-18 22:17:45', 450, 102, 33, 51),
+('ctrlPlayer', 'ctrlplayer@gmail.com', '12345678', '2025-02-20 18:09:18', 120, 67, 8, 19),
+('insertCoin', 'insertcoin@gmail.com', '12345678', '2025-02-25 14:50:41', 66, 33, 3, 7),
+('arcadeKid', 'arcadekid@gmail.com', '12345678', '2025-03-01 09:14:03', 44, 54, 0, 3),
+('joystickPro', 'joystickpro@gmail.com', '12345678', '2025-03-03 21:22:19', 167, 58, 9, 22),
+
+('pongBot', 'pongbot@gmail.com', '12345678', '2025-03-06 12:45:55', 240, 88, 13, 30),
+('vhsPlayer', 'vhsplayer@gmail.com', '12345678', '2025-03-10 16:03:27', 22, 16, 1, 3),
+('fliperama', 'fliperama@gmail.com', '12345678', '2025-03-14 11:55:42', 350, 140, 11, 26),
+('terminalUser', 'terminaluser@gmail.com', '12345678', '2025-03-16 08:34:50', 92, 71, 2, 6),
+('scanline', 'scanline@gmail.com', '12345678', '2025-03-18 19:02:10', 174, 66, 7, 15),
+
+('pongzera', 'pongzera@gmail.com', '12345678', '2025-03-22 13:48:33', 130, 45, 6, 17),
+('masterXP', 'masterxp@gmail.com', '12345678', '2025-03-25 10:25:44', 205, 89, 10, 20),
+('cpuHunter', 'cpuhunter@gmail.com', '12345678', '2025-03-28 15:12:59', 98, 40, 5, 12),
+('matrixGreen', 'matrixgreen@gmail.com', '12345678', '2025-04-01 17:44:18', 47, 62, 0, 4),
+('byteWarrior', 'bytewarrior@gmail.com', '12345678', '2025-04-05 20:11:02', 118, 38, 8, 16),
+
+('superPong', 'superpong@gmail.com', '12345678', '2025-04-08 14:18:11', 279, 81, 17, 35),
+('pongPlayer', 'pongplayer@gmail.com', '12345678', '2025-04-11 09:41:53', 64, 29, 3, 9),
+('ultraArcade', 'ultraarcade@gmail.com', '12345678', '2025-04-14 12:55:06', 188, 57, 12, 24),
+('shadowCRT', 'shadowcrt@gmail.com', '12345678', '2025-04-18 18:20:31', 52, 49, 1, 5),
+('finalBoss', 'finalboss@gmail.com', '12345678', '2025-04-22 22:07:12', 399, 90, 25, 44);
+
+-- =========================================
+-- INSERTS DE PARTIDAS
+-- =========================================
+
+INSERT INTO partida
+(id_usuario, pontuacao_player, pontuacao_cpu, duracao_segundos, data_partida, resultado)
+VALUES
+
+(1, 5, 2, 98, '2025-06-01 14:22:11', 'VITORIA'),
+(1, 5, 1, 75, '2025-06-02 15:10:02', 'VITORIA'),
+(1, 3, 5, 120, '2025-06-03 17:44:20', 'DERROTA'),
+(1, 5, 0, 65, '2025-06-04 18:55:10', 'VITORIA'),
+
+(2, 5, 4, 210, '2025-06-01 11:33:15', 'VITORIA'),
+(2, 2, 5, 180, '2025-06-02 13:22:10', 'DERROTA'),
+(2, 5, 3, 140, '2025-06-03 19:05:50', 'VITORIA'),
+
+(3, 5, 0, 35, '2025-06-01 20:14:22', 'VITORIA'),
+(3, 5, 1, 42, '2025-06-02 21:16:42', 'VITORIA'),
+(3, 1, 5, 70, '2025-06-03 22:10:11', 'DERROTA'),
+(3, 5, 2, 50, '2025-06-04 12:44:55', 'VITORIA'),
+
+(4, 5, 4, 400, '2025-06-01 16:45:30', 'VITORIA'),
+(4, 5, 0, 33, '2025-06-02 14:22:44', 'VITORIA'),
+(4, 5, 1, 47, '2025-06-03 15:33:17', 'VITORIA'),
+(4, 2, 5, 122, '2025-06-04 19:28:41', 'DERROTA'),
+
+(5, 5, 3, 190, '2025-06-01 09:18:52', 'VITORIA'),
+(5, 4, 5, 250, '2025-06-02 11:50:31', 'DERROTA'),
+
+(6, 5, 4, 320, '2025-06-01 13:11:20', 'VITORIA'),
+(6, 1, 5, 90, '2025-06-02 17:08:42', 'DERROTA'),
+
+(7, 5, 2, 88, '2025-06-01 18:00:00', 'VITORIA'),
+(7, 5, 0, 39, '2025-06-02 19:10:15', 'VITORIA'),
+(7, 0, 5, 77, '2025-06-03 20:55:10', 'DERROTA'),
+
+(8, 5, 1, 60, '2025-06-01 12:15:18', 'VITORIA'),
+(8, 5, 2, 55, '2025-06-02 13:48:32', 'VITORIA'),
+
+(9, 2, 5, 140, '2025-06-01 10:41:12', 'DERROTA'),
+(9, 5, 3, 170, '2025-06-02 14:11:44', 'VITORIA'),
+
+(10, 1, 5, 220, '2025-06-01 08:35:50', 'DERROTA'),
+(10, 5, 4, 260, '2025-06-02 21:22:11', 'VITORIA'),
+
+(11, 5, 0, 29, '2025-06-01 16:20:00', 'VITORIA'),
+(11, 5, 1, 38, '2025-06-02 17:50:33', 'VITORIA'),
+
+(12, 5, 2, 74, '2025-06-01 18:30:00', 'VITORIA'),
+(13, 4, 5, 110, '2025-06-01 20:15:00', 'DERROTA'),
+(14, 5, 4, 300, '2025-06-01 21:42:00', 'VITORIA'),
+(15, 5, 3, 133, '2025-06-02 13:13:00', 'VITORIA'),
+
+(16, 5, 0, 45, '2025-06-02 14:14:00', 'VITORIA'),
+(17, 2, 5, 156, '2025-06-02 15:15:00', 'DERROTA'),
+(18, 5, 1, 59, '2025-06-02 16:16:00', 'VITORIA'),
+(19, 3, 5, 144, '2025-06-02 17:17:00', 'DERROTA'),
+(20, 5, 4, 277, '2025-06-02 18:18:00', 'VITORIA'),
+
+(21, 5, 2, 92, '2025-06-03 10:10:00', 'VITORIA'),
+(22, 5, 1, 41, '2025-06-03 11:11:00', 'VITORIA'),
+(23, 1, 5, 210, '2025-06-03 12:12:00', 'DERROTA'),
+(24, 5, 0, 36, '2025-06-03 13:13:00', 'VITORIA'),
+(25, 5, 4, 390, '2025-06-03 14:14:00', 'VITORIA'),
+
+(26, 5, 3, 121, '2025-06-03 15:15:00', 'VITORIA'),
+(27, 5, 2, 89, '2025-06-03 16:16:00', 'VITORIA'),
+(28, 5, 1, 48, '2025-06-03 17:17:00', 'VITORIA'),
+(29, 4, 5, 222, '2025-06-03 18:18:00', 'DERROTA'),
+(30, 5, 0, 31, '2025-06-03 19:19:00', 'VITORIA');
+
+-- =========================================
+-- INSERTS DE USUARIO_CONQUISTA
+-- =========================================
+
+INSERT INTO usuario_conquista
+(id_usuario, id_conquista, data_conquista)
+VALUES
+
+(1, 1, '2025-06-01 14:25:00'),
+(1, 2, '2025-06-05 16:30:00'),
+(1, 5, '2025-06-07 17:45:00'),
+(1, 8, '2025-06-09 18:20:00'),
+
+(2, 1, '2025-06-03 12:11:00'),
+(2, 5, '2025-06-08 13:14:00'),
+
+(3, 1, '2025-06-01 10:10:00'),
+(3, 2, '2025-06-04 11:22:00'),
+(3, 3, '2025-06-07 12:33:00'),
+(3, 5, '2025-06-09 13:44:00'),
+(3, 6, '2025-06-10 14:55:00'),
+(3, 9, '2025-06-12 15:20:00'),
+
+(4, 1, '2025-06-01 08:00:00'),
+(4, 2, '2025-06-02 09:00:00'),
+(4, 3, '2025-06-04 10:00:00'),
+(4, 4, '2025-06-06 11:00:00'),
+(4, 5, '2025-06-07 12:00:00'),
+(4, 6, '2025-06-08 13:00:00'),
+(4, 7, '2025-06-09 14:00:00'),
+(4, 8, '2025-06-10 15:00:00'),
+(4, 9, '2025-06-11 16:00:00'),
+(4, 12, '2025-06-12 17:00:00'),
+
+(5, 1, '2025-06-05 18:00:00'),
+
+(6, 1, '2025-06-04 19:00:00'),
+(6, 10, '2025-06-15 20:00:00'),
+
+(7, 1, '2025-06-02 21:00:00'),
+(7, 2, '2025-06-06 22:00:00'),
+(7, 9, '2025-06-08 23:00:00'),
+
+(8, 1, '2025-06-01 14:00:00'),
+(8, 5, '2025-06-03 15:00:00'),
+
+(11, 1, '2025-06-01 16:00:00'),
+(11, 2, '2025-06-03 17:00:00'),
+(11, 3, '2025-06-05 18:00:00'),
+(11, 4, '2025-06-07 19:00:00'),
+(11, 5, '2025-06-08 20:00:00'),
+(11, 6, '2025-06-09 21:00:00'),
+(11, 7, '2025-06-10 22:00:00'),
+(11, 12, '2025-06-11 23:00:00'),
+
+(15, 1, '2025-06-02 12:00:00'),
+(15, 2, '2025-06-04 13:00:00'),
+(15, 5, '2025-06-05 14:00:00'),
+
+(18, 1, '2025-06-01 11:00:00'),
+(18, 2, '2025-06-03 12:00:00'),
+(18, 3, '2025-06-06 13:00:00'),
+
+(20, 1, '2025-06-04 14:00:00'),
+(20, 8, '2025-06-10 15:00:00'),
+
+(25, 1, '2025-06-05 16:00:00'),
+(25, 8, '2025-06-11 17:00:00'),
+
+(30, 1, '2025-06-02 18:00:00'),
+(30, 4, '2025-06-08 19:00:00'),
+(30, 7, '2025-06-12 20:00:00');
