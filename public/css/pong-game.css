@@ -13,13 +13,68 @@
 }
 
 #playButton {
+    justify-content: center;
+    gap: 1rem;
+    transition: all 200ms ease-in-out;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+
+    i {
+        font-size: 36px;
+    }
+
+    span {
+        font-size: 44px;
+    }
+}
+
+.disabled-button {
+    color: var(--accent-disabled) !important;
+    border-color: var(--accent-disabled) !important;
+    text-shadow: none;
+    cursor: auto;
+}
+
+.modal-screen {
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    font-weight: 1000;
-    padding: 1rem 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    span {
+        font-weight: 1000;
+        font-size: 80px;
+        font-family: 'PixelOperator';
+    }
+}
+
+#titleScreen {
+    display: flex;
+    span {
+        font-size: 200px;
+        text-shadow: none;
+    }
+}
+
+#victoryScreen {
+    /* display: flex; */
+    span {
+        color: var(--color-primary);
+    }
+}
+
+#defeatScreen {
+    /* display: flex; */
+    span {
+        text-shadow: none;
+        color: var(--text-muted);
+    }
 }
 
 .game-box-main-content {
@@ -30,13 +85,39 @@
 .game-box-main-content-right {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    /* gap: .5rem; */
+    justify-content: space-around;
     padding: 0 .5rem;
     font-size: 14px;
 }
 
 .game-terminal-box {
     border-radius: 6px;
+}
+
+.game-terminal-box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* .game-terminal-box .terminal-dashed-line {
+    margin-top: .25rem;
+} */
+
+.time-container {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    .time-label {
+        font-size: 12px;
+        margin-bottom: .35rem;
+    }
+}
+
+#timeText {
+    font-size: 24px;
 }
 
 .game-score-container {

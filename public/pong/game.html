@@ -50,12 +50,21 @@
             <div class="profile-box-main-content game-box-main-content">
                 <div class="pong-canvas-container">
                     <canvas id="pong-canvas" width="500" height="500"></canvas>
-                    <button class="profile-box-bottom-button" id="playButton">PLAY</button>
+                    <div class="modal-screen" id="titleScreen"><span>PONG</span></div>
+                    <div class="modal-screen" id="pauseScreen"><span>PAUSADO</span></div>
+                    <div class="modal-screen" id="victoryScreen"><span>VITÓRIA!</span></div>
+                    <div class="modal-screen" id="defeatScreen"><span>DERROTA</span></div>
                 </div>
 
                 <div class="game-box-main-content-right">
                     <div class="terminal-box game-terminal-box">
-                        <span>PLACAR</span>
+                        <div class="game-terminal-box-top">
+                            <span>PLACAR</span>
+                            <div class="time-container">
+                                <span class="time-label">TIME:</span>
+                                <span id="timeText">000</span>
+                            </div>
+                        </div>
                         <div class="terminal-dashed-line"></div>
                         <div class="game-score-container">
                             <div class="game-score-points">
@@ -121,6 +130,10 @@
 
                         </div>
                     </div>
+                    <button class="profile-box-bottom-button" id="playButton">
+                        <i class="fa-solid fa-gamepad"></i>
+                        <span>PLAY PONG</span>
+                    </button>
                 </div>
             </div>
 

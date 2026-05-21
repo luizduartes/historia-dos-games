@@ -11,7 +11,8 @@ let playerScore = 0
 let cpuScore = 0
 let matchSeconds = 0
 let paused = false
-
+let isPlaying = false
+let timerInterval
 
 // Propriedades da Raquete do Player
 let racketWidth = 100
@@ -25,28 +26,32 @@ const playerVelocity = 7
 // Propriedades da Raquete da Cpu
 let racketCpuX = canvas.width / 2 - racketWidth / 2
 let racketCpuY = 0
-const cpuDeadzone = 20
+const cpuMaxDeadzone = 25
+const cpuMinDeadzone = 15
+let cpuDeadzone = 10
 const cpuMinVelocity = 3
-const cpuMaxVelocity = 5
+const cpuMaxVelocity = 7
 let cpuVelocity = 1
 
 // Propriedades da bola
 const ballRadius = 8
 let ballX = canvas.width / 2
 let ballY = canvas.height / 2
-const ballMaxVelocity = 4
+const ballMaxVelocity = 6
 let ballVelocityX = 0
 let ballVelocityY = ballMaxVelocity
 const accelerationBallColision = 1.05
+const initialVelocityY = 4
 
-resetBall()
+let animationId
 
-function normalized(valor, minAtual, maxAtual, minDesejado, maxDesejado) {
-  // 1. Normaliza o valor para a escala de 0 a 1
-  const normalizedValue = (valor - minAtual) / (maxAtual - minAtual);
+// Função para normalizar um valor de um range para um novo range
+function normalizeValue(value, currentMin, currentMax, minRange, maxRange) {
+  // Normaliza o valor para a escala de 0 a 1
+  const normalizedValue = (value - currentMin) / (currentMax - currentMin)
   
-  // 2. Aplica o valor na nova escala desejada
-  return normalizedValue * (maxDesejado - minDesejado) + minDesejado;
+  // Aplica o valor na nova escala desejada
+  return normalizedValue * (maxRange - minRange) + minRange
 }
 
 function resetBall() {
@@ -56,14 +61,19 @@ function resetBall() {
     ballVelocityY = 0
 
     setTimeout(() => {
-        ballVelocityX = (Math.random() > 0.5 ? 1 : -1) * ballMaxVelocity
-        ballVelocityY = (Math.random() > 0.5 ? 1 : -1) * ballMaxVelocity
+        ballVelocityX = Math.random() * 2
+        ballVelocityY = (Math.random() > 0.5 ? 1 : -1) * initialVelocityY
     }, 2000)
+}
+
+function drawClear() {
+    // Limpando a tela
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 }
 
 function draw() {
     // Limpando a tela
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    drawClear()
 
     // Cor de preenchimento
     ctx.fillStyle = neonColor
@@ -99,26 +109,26 @@ function loop() {
         // Colisão da bola com o player
         if
         (
-            ballY + ballRadius >= racketY && 
-            ballX > racketX && 
+            ballY + ballRadius >= racketY &&
+            ballX > racketX &&
             ballX < racketX + racketWidth
         )
         {
             ballVelocityY *= -(accelerationBallColision)
-            ballVelocityX += normalized(ballX, racketX, racketX + racketWidth, -1, 1) * ballMaxVelocity
+            ballVelocityX = normalizeValue(ballX, racketX, racketX + racketWidth, -1, 1) * ballMaxVelocity
             ballY = racketY - ballRadius
         }
 
         // Colisão da bola com a Cpu
         if
         (
-            ballY - ballRadius <= racketHeight && 
-            ballX > racketCpuX && 
+            ballY - ballRadius <= racketHeight &&
+            ballX > racketCpuX &&
             ballX < racketCpuX + racketWidth
         )
         {
             ballVelocityY *= -(accelerationBallColision)
-            ballVelocityX += normalized(ballX, racketCpuX, racketCpuX + racketWidth, -1, 1) * ballMaxVelocity
+            ballVelocityX += normalizeValue(ballX, racketCpuX, racketCpuX + racketWidth, -1, 1) * ballMaxVelocity
             ballY = racketHeight + ballRadius
         }
 
@@ -126,13 +136,20 @@ function loop() {
         if (ballY < 0 || ballY > canvas.height) {
             let scoredBy = ballY < 0 ? "player" : "cpu"
             resetBall()
-            if (scoredBy == "player") playerGoal()
-            if (scoredBy == "cpu") cpuGoal()
+            if (scoredBy == "player") {
+                // Interrompe função se tiver acabado a partida
+                if (playerGoal()) return
+            }
+            if (scoredBy == "cpu") {
+                // Interrompe função se tiver acabado a partida
+                if (cpuGoal()) return
+            }
         }
 
         // Variando a velocidade da Cpu
-        if (Math.random() > 0.7) {
-            cpuVelocity = normalized(Math.random(), 0, 1, cpuMinVelocity, cpuMaxVelocity)
+        if (Math.random() > 0.9) {
+            cpuVelocity = normalizeValue(Math.random(), 0, 1, cpuMinVelocity, cpuMaxVelocity)
+            cpuDeadzone = Math.floor(Math.random() * (cpuMaxDeadzone - cpuMinDeadzone + 1)) + cpuMinDeadzone
         }
 
         // Movimento da Cpu
@@ -149,28 +166,124 @@ function loop() {
     }
 
     draw()
-    requestAnimationFrame(loop)
+    animationId = requestAnimationFrame(loop)
 }
 
 function playerGoal() {
     playerScore++
     playerScoreText.innerText = String(playerScore).padStart(2, "0")
+
+    if (playerScore >= 5) {
+        gameover()
+        return true
+    }
+    return false
 }
 
 function cpuGoal() {
     cpuScore++
     cpuScoreText.innerText = String(cpuScore).padStart(2, "0")
+
+    if (cpuScore >= 5) {
+        gameover()
+        return true
+    }
+    return false
+}
+
+// Limpando variáveis para recomeçar o jogo
+function cleanVariables() {
+    // Estados
+    paused = false
+    isPlaying = false
+
+    // Tempo
+    clearInterval(timerInterval)
+    matchSeconds = 0
+    timeText.innerText = String(matchSeconds).padStart(3, "0")
+
+    // Placar
+    playerScore = 0
+    cpuScore = 0
+
+    playerScoreText.innerText = "00"
+    cpuScoreText.innerText = "00"
+
+    // Movimento do player
+    playerRacketLeft = 0
+    playerRacketRight = 0
+
+    // Raquete player
+    racketX = canvas.width / 2 - racketWidth / 2
+    racketY = canvas.height - racketHeight
+
+    // Raquete cpu
+    racketCpuX = canvas.width / 2 - racketWidth / 2
+    racketCpuY = 0
+
+    cpuVelocity = cpuMinVelocity
+    cpuDeadzone = cpuMinDeadzone
+
+    // Bola
+    resetBall()
+
+    // Telas
+    pauseScreen.style.display = "none"
+    victoryScreen.style.display = "none"
+    defeatScreen.style.display = "none"
+    titleScreen.style.display = "none"
+
+    // Render inicial
+    draw()
+}
+
+function gameover() {
+    if (playerScore == cpuScore) {
+        console.error("Jogo finalizou com um empate!")
+        return
+    }
+
+    drawClear()
+    cancelAnimationFrame(animationId)
+    clearInterval(timerInterval)
+    let winner = playerScore > cpuScore ? "player" : "cpu"
+
+    if (winner == "player") {
+        victoryScreen.style.display = 'flex'
+    } else {
+        defeatScreen.style.display = 'flex'
+    }
+
+    isPlaying = false
+    playButton.classList.remove('disabled-button')
 }
 
 // Função para dar play no jogo
 playButton.addEventListener('click', () => {
-    playButton.style.display = "none"
+    if (isPlaying) return
+    titleScreen.style.display = "none"
+    victoryScreen.style.display = "none"
+    defeatScreen.style.display = "none"
     play()
 })
 
+function playMatchTimer() {
+    timerInterval = setInterval(() => {
+       matchSeconds++
+       timeText.innerText = String(matchSeconds).padStart(3, "0")
+    }, 1000)
+}
+
 function play() {
+    cleanVariables()
+
     // Começa o loop()
     loop()
+
+    playMatchTimer()
+
+    isPlaying = true
+    playButton.classList.add('disabled-button')
 }
 
 // Inputs
@@ -185,5 +298,16 @@ addEventListener('keyup', (e) => {
 })
 
 addEventListener('keydown', (e) => {
-    if (e.code == 'Escape') paused = !paused
+    if (e.code == 'Escape' && isPlaying) {
+        paused = !paused
+        
+        if (paused) {
+            pauseScreen.style.display = 'flex'
+            clearInterval(timerInterval)
+            return
+        }
+        pauseScreen.style.display = 'none'
+        playMatchTimer()
+    }
+
 })
