@@ -1,4 +1,4 @@
-USE historia_dos_games;
+USE histgames;
 
 -- =========================================
 -- INSERTS DE CONQUISTAS
