@@ -1,8 +1,8 @@
-var usuarioModel = require("../models/usuarioModel");
+const usuarioModel = require("../models/usuarioModel");
 
 function autenticar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    let email = req.body.emailServer;
+    let senha = req.body.senhaServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -42,9 +42,9 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var username = req.body.usernameServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    let username = req.body.usernameServer;
+    let email = req.body.emailServer;
+    let senha = req.body.senhaServer;
 
     if (username == undefined) {
         res.status(400).send("Seu username está undefined!");
@@ -68,7 +68,41 @@ function cadastrar(req, res) {
     }
 }
 
+function addMatch(req, res) {
+    let id = req.body.idServer
+    let playerScore = req.body.playerScoreServer
+    let cpuScore = req.body.cpuScoreServer
+    let matchSeconds = req.body.matchSecondsServer
+    let matchResult = req.body.matchResultServer
+
+    if (id == undefined) {
+        res.status(400).send("Seu id está undefined!")
+    } else if (playerScore == undefined) {
+        res.status(400).send("Seu playerScore está undefined!")
+    } else if (cpuScore == undefined) {
+        res.status(400).send("Sua cpuScore está undefined!")
+    } else if (matchSeconds == undefined) {
+        res.status(400).send("Sua matchSeconds está undefined!")
+    } else if (matchResult == undefined) {
+        res.status(400).send("Sua matchResult está undefined!")
+    } else {
+        usuarioModel.addMatch(id, playerScore, cpuScore, matchSeconds, matchResult)
+            .then(
+                function (resultado) {
+                    res.json(resultado)
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro)
+                    console.log("\nHouve um erro ao adicionar partida! Erro: ", erro.sqlMessage)
+                    res.status(500).json(erro.sqlMessage)
+                }
+            );
+    }
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    addMatch
 }

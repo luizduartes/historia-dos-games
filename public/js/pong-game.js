@@ -1,3 +1,11 @@
+import { changeToPage } from "./utils.js";
+
+// Redireciona o usuário caso não esteja logado
+if (!sessionStorage.ID_USUARIO) {
+    alert('Faça login para jogar o PONG!')
+    changeToPage('../index.html')
+}
+
 const canvas = document.getElementById("pong-canvas")
 const ctx = canvas.getContext("2d")
 
@@ -256,6 +264,7 @@ function gameover() {
 
     isPlaying = false
     playButton.classList.remove('disabled-button')
+    saveMatch()
 }
 
 // Função para dar play no jogo
@@ -311,3 +320,41 @@ addEventListener('keydown', (e) => {
     }
 
 })
+
+// Cadastrar a partida no banco de dados
+async function saveMatch() {
+    const idVar = String(sessionStorage.ID_USUARIO)
+    const playerScoreVar = String(playerScore)
+    const cpuScoreVar = String(cpuScore)
+    const matchSecondsVar = String(matchSeconds)
+    const matchResultVar = playerScore > cpuScore ? 'VITORIA' : 'DERROTA'
+    
+    if (!idVar || !playerScoreVar || !cpuScoreVar || !matchSecondsVar || !matchResultVar) {
+        showErrorMessage("ERRO DE VALIDAÇÃO", "TODOS OS CAMPOS SÃO OBRIGATÓRIOS")
+        return false;
+    }
+    
+    try {
+        const resposta = await fetch("http://localhost:3333/usuarios/partida", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                idServer: idVar,
+                playerScoreServer: playerScoreVar,
+                cpuScoreServer: cpuScoreVar,
+                matchSecondsServer: matchSecondsVar,
+                matchResultServer: matchResultVar,
+            }),
+        });
+
+        if (resposta.ok) {
+            console.log("Partida cadastrada com sucesso!")
+        } else {
+            throw new Error();
+        }
+    } catch (erro) {
+        console.error("Erro ao cadastrar partida!")
+    }
+
+    return false;
+}
