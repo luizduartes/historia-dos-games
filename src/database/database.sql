@@ -116,37 +116,80 @@ ORDER BY data_conquista DESC;
 
 -- VITÓRIAS TOTAIS
 CREATE VIEW rank_vitoria AS
-SELECT username, vitorias FROM usuario
-ORDER BY vitorias DESC
-LIMIT 10;
+WITH ranking AS (
+	SELECT
+		id,
+        username,
+        vitorias AS pontuacao,
+        RANK() OVER (ORDER BY vitorias DESC) as posicao
+    FROM usuario
+)
+SELECT * FROM ranking;
+-- PEGAR TOP 10 DO RANK:
+-- SELECT * FROM rank_vitoria LIMIT 10;
+
+-- PEGAR INFORMAÇÕES DO USUÁRIO NAQUELE RANK
+-- SELECT * FROM rank_vitoria WHERE id = ?;
+
 
 -- VITÓRIAS EM SEQUÊNCIA
 CREATE VIEW rank_win_streak AS
-SELECT username, melhor_win_streak FROM usuario
-ORDER BY melhor_win_streak DESC
-LIMIT 10;
+WITH ranking AS (
+	SELECT
+		id,
+        username,
+        melhor_win_streak AS pontuacao,
+        RANK() OVER (ORDER BY melhor_win_streak DESC) as posicao
+    FROM usuario
+)
+SELECT * FROM ranking;
+-- PEGAR TOP 10 DO RANK:
+-- SELECT * FROM rank_win_streak LIMIT 10;
+
+-- PEGAR INFORMAÇÕES DO USUÁRIO NAQUELE RANK
+-- SELECT * FROM rank_win_streak WHERE id = ?;
+
 
 -- VITÓRIAS MAIS RÁPIDAS
 CREATE VIEW rank_vitoria_mais_rapida AS
-SELECT u.username, MIN(p.duracao_segundos) AS melhor_duracao FROM partida p
-JOIN usuario u
-	ON p.id_usuario = u.id
-WHERE p.resultado = 'VITORIA'
-GROUP BY u.id
-ORDER BY melhor_duracao ASC
-LIMIT 10;
+WITH ranking AS (
+	SELECT
+		u.id,
+        u.username,
+        MIN(p.duracao_segundos) AS pontuacao,
+        RANK() OVER (ORDER BY MIN(p.duracao_segundos) ASC) AS posicao
+    FROM partida p
+    JOIN usuario u
+		ON p.id_usuario = u.id
+	WHERE p.resultado = 'VITORIA'
+	GROUP BY u.id
+)
+SELECT * FROM ranking;
+-- PEGAR TOP 10 DO RANK:
+-- SELECT * FROM rank_vitoria_mais_rapida LIMIT 10;
+
+-- PEGAR INFORMAÇÕES DO USUÁRIO NAQUELE RANK
+-- SELECT * FROM rank_vitoria_mais_rapida WHERE id = ?;
 
 
 -- MAIS CONQUISTAS
 CREATE VIEW rank_conquista AS
-SELECT
-    u.username,
-    COUNT(uc.id_usuario) AS qtd_conquista
-FROM usuario u
-JOIN usuario_conquista uc
-	ON uc.id_usuario = u.id
-JOIN conquista c
-	ON uc.id_conquista = c.id
-GROUP BY u.id
-ORDER BY qtd_conquista DESC
-LIMIT 10;
+WITH ranking AS (
+    SELECT
+        u.id,
+        username,
+        COUNT(uc.id_usuario) AS pontuacao,
+        RANK() OVER (ORDER BY COUNT(uc.id_usuario) DESC) as posicao
+    FROM usuario u
+	LEFT JOIN usuario_conquista uc
+		ON uc.id_usuario = u.id
+	LEFT JOIN conquista c
+		ON uc.id_conquista = c.id
+	GROUP BY u.id
+)
+SELECT * FROM ranking;
+-- PEGAR TOP 10 DO RANK:
+-- SELECT * FROM rank_conquista LIMIT 10;
+
+-- PEGAR INFORMAÇÕES DO USUÁRIO NAQUELE RANK
+-- SELECT * FROM rank_conquista WHERE id = ?;
