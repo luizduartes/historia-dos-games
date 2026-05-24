@@ -10,9 +10,13 @@ updateBottomBar()
 // Função para controlar o scroll horizontal da página
 updateScroll()
 
-// Redirecionando usuário para a tela de Login
+// Redirecionando para a tela de Login ou para a tela de Perfil do Usuário
 loginButton.addEventListener('click', () => {
-    changeToPage('./auth/login.html')
+    if (sessionStorage.ID_USUARIO) {
+        changeToPage('./user/profile.html')
+    } else {
+        changeToPage('./auth/login.html')
+    }
 })
 
 function updateUsernameOnPage() {
