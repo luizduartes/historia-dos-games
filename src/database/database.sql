@@ -32,6 +32,7 @@ CREATE TABLE conquista(
     descricao VARCHAR(200) NOT NULL,
     tipo VARCHAR(30) NOT NULL,
     valor INT NOT NULL,
+    nome_icone VARCHAR(30) NOT NULL,
     CONSTRAINT ctTipo CHECK(tipo IN ('VITORIA', 'WIN_STREAK', 'DURACAO', 'PARTIDAS', 'PLACAR'))
 );
 
@@ -49,7 +50,7 @@ CREATE TABLE usuario_conquista(
 -- =============================================
 
 -- ID | NOME | CONQUISTAS(ATUAIS E TOTAIS) | DATA DE CADASTRO
-CREATE VIEW user_infos AS
+CREATE OR REPLACE VIEW user_infos AS
 SELECT
 	u.id,
     u.username,
@@ -66,9 +67,10 @@ GROUP BY u.id;
 -- ============================================================
 
 -- ID | VITÓRIAS TOTAIS | DERROTAS TOTAIS | WIN STREAK ATUAL | MELHOR WIN STREAK | PARTIDAS JOGADAS | TEMPO TOTAL JOGADO
-CREATE VIEW user_overview AS
+CREATE OR REPLACE VIEW user_overview AS
 SELECT
 	u.id,
+    u.vitorias + u.derrotas AS partidas,
 	u.vitorias,
     u.derrotas,
     u.win_streak_atual,
@@ -82,7 +84,7 @@ GROUP BY u.id;
 -- ============================================================
 
 -- DESEMPENHO RECENTE (ÚLTIMAS 20 PARTIDAS)
-CREATE VIEW user_recent_performance AS
+CREATE OR REPLACE VIEW user_recent_performance AS
 SELECT * FROM partida
 ORDER BY data_partida DESC;
 
@@ -94,7 +96,7 @@ ORDER BY data_partida DESC;
 -- ============================================================
 
 -- ÚLTIMAS CONQUISTAS
-CREATE VIEW user_latest_achievements AS
+CREATE OR REPLACE VIEW user_latest_achievements AS
 SELECT
 	uc.id_usuario,
 	c.nome,
@@ -115,7 +117,7 @@ ORDER BY data_conquista DESC;
 -- --> RANKS
 
 -- VITÓRIAS TOTAIS
-CREATE VIEW rank_vitoria AS
+CREATE OR REPLACE VIEW rank_vitoria AS
 WITH ranking AS (
 	SELECT
 		id,
@@ -133,7 +135,7 @@ SELECT * FROM ranking;
 
 
 -- VITÓRIAS EM SEQUÊNCIA
-CREATE VIEW rank_win_streak AS
+CREATE OR REPLACE VIEW rank_win_streak AS
 WITH ranking AS (
 	SELECT
 		id,
@@ -151,7 +153,7 @@ SELECT * FROM ranking;
 
 
 -- VITÓRIAS MAIS RÁPIDAS
-CREATE VIEW rank_vitoria_mais_rapida AS
+CREATE OR REPLACE VIEW rank_vitoria_mais_rapida AS
 WITH ranking AS (
 	SELECT
 		u.id,
@@ -173,7 +175,7 @@ SELECT * FROM ranking;
 
 
 -- MAIS CONQUISTAS
-CREATE VIEW rank_conquista AS
+CREATE OR REPLACE VIEW rank_conquista AS
 WITH ranking AS (
     SELECT
         u.id,

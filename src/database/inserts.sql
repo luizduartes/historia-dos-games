@@ -4,23 +4,23 @@ USE histgames;
 -- INSERTS DE CONQUISTAS
 -- =========================================
 
-INSERT INTO conquista (nome, descricao, tipo, valor) VALUES
-('Primeira Vitória', 'Vença sua primeira partida.', 'VITORIA', 1),
-('Iniciante', 'Vença 5 partidas.', 'VITORIA', 5),
-('Veterano', 'Vença 25 partidas.', 'VITORIA', 25),
-('Lenda do Pong', 'Vença 100 partidas.', 'VITORIA', 100),
+INSERT INTO conquista (nome, descricao, tipo, valor, nome_icone) VALUES
+('Primeira Vitória', 'Vença sua primeira partida.', 'VITORIA', 1, 'flag-checkered'),
+('Iniciante', 'Vença 5 partidas.', 'VITORIA', 5, 'medal'),
+('Veterano', 'Vença 25 partidas.', 'VITORIA', 25, 'trophy'),
+('Lenda do Pong', 'Vença 100 partidas.', 'VITORIA', 100, 'crown'),
 
-('Sequência Quente', 'Alcance 3 vitórias seguidas.', 'WIN_STREAK', 3),
-('Dominando Tudo', 'Alcance 10 vitórias seguidas.', 'WIN_STREAK', 10),
-('Rei do Pong', 'Alcance 20 vitórias seguidas.', 'WIN_STREAK', 20),
+('Sequência Quente', 'Alcance 3 vitórias seguidas.', 'WIN_STREAK', 3, 'fire'),
+('Dominando Tudo', 'Alcance 10 vitórias seguidas.', 'WIN_STREAK', 10, 'bolt'),
+('Rei do Pong', 'Alcance 20 vitórias seguidas.', 'WIN_STREAK', 20, 'chess-king'),
 
-('Maratonista', 'Faça uma partida durar mais de 400 segundos.', 'DURACAO', 400),
-('Velocista', 'Vença uma partida em menos de 40 segundos.', 'DURACAO', 40),
+('Maratonista', 'Faça uma partida durar mais de 400 segundos.', 'DURACAO', 400, 'stopwatch'),
+('Velocista', 'Vença uma partida em menos de 40 segundos.', 'DURACAO', 40, 'gauge-high'),
 
-('Persistente', 'Jogue 50 partidas.', 'PARTIDAS', 50),
-('Arcade Master', 'Jogue 200 partidas.', 'PARTIDAS', 200),
+('Persistente', 'Jogue 50 partidas.', 'PARTIDAS', 50, 'gamepad'),
+('Arcade Master', 'Jogue 200 partidas.', 'PARTIDAS', 200, 'ghost'),
 
-('Humilhação', 'Vença a CPU por 5x0.', 'PLACAR', 5);
+('Humilhação', 'Vença a CPU por 5x0.', 'PLACAR', 5, 'skull');
 
 -- =========================================
 -- INSERTS DE USUÁRIOS
