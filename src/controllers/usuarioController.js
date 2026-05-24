@@ -17,14 +17,11 @@ function autenticar(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); 
 
                     if (resultadoAutenticar.length == 1) {
-                        // AQUI ESTÁ A MUDANÇA:
-                        // Enviamos os dados do usuário de volta para o frontend
                         res.json({
                             id: resultadoAutenticar[0].id,
                             email: resultadoAutenticar[0].email,
                             username: resultadoAutenticar[0].username,
-                        });
-
+                        })
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

@@ -37,6 +37,7 @@
     border-radius: 4px;
     width: max-content;
     cursor: pointer;
+    transition: all 200ms ease-in-out;
 
     i {
         font-size: 24px;

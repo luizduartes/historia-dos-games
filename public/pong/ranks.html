@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/pong-ranks.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script type="module" src="../js/ranks.js" defer></script>
 </head>
 <body>
     <main class="centralized-main">
@@ -50,21 +51,21 @@
                 <div class="terminal-box ranks-box-main-content-part ranks-box-main-content-left">
                     <span>RANKING ATUAL</span>
                     <div class="rank-selector-buttons-wrapper">
-                        <button class="rank-selector-button rank-selector-button-active">
+                        <button class="rank-selector-button rank-selector-button-active" id="rankVictoryButton">
                             <i class="fa-solid fa-trophy"></i>
                             <span>VITÓRIAS<br>TOTAIS</span>
                         </button>
-                        <button class="rank-selector-button">
+                        <button class="rank-selector-button" id="rankWinStreakButton">
                             <i class="fa-solid fa-fire"></i>
                             <span>WIN<br>STREAK</span>
                         </button>
-                        <button class="rank-selector-button">
+                        <button class="rank-selector-button" id="rankFastestVictoryButton">
                             <i class="fa-solid fa-stopwatch"></i>
                             <span>VITÓRIAS<br>MAIS RÁPIDAS</span>
                         </button>
-                        <button class="rank-selector-button">
-                            <i class="fa-solid fa-clock"></i>
-                            <span>TEMPO TOTAL<br>JOGADO</span>
+                        <button class="rank-selector-button" id="rankAchievementButton">
+                            <i class="fa-solid fa-medal"></i>
+                            <span>CONQUISTAS</span>
                         </button>
                     </div>
                     <div class="rank-container">
@@ -72,55 +73,55 @@
                             <div class="grid-rank rank-labels">
                                 <span>POSIÇÃO</span>
                                 <span>JOGADOR</span>
-                                <span>VITÓRIAS</span>
+                                <span id="rankTypeLabel">VITÓRIAS</span>
                             </div>
                             <div class="terminal-dashed-line"></div>
-                            <div class="grid-rank rank-positions">
-                                <span>1.</span>
-                                <span>player10</span>
-                                <span class="rank-score">210</span>
+                            <div class="grid-rank rank-positions" id="ranksPositionsGrid">
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>2.</span>
-                                <span>player33</span>
-                                <span class="rank-score">200</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>3.</span>
-                                <span>player17</span>
-                                <span class="rank-score">100</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>4.</span>
-                                <span>player009</span>
-                                <span class="rank-score">90</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>5.</span>
-                                <span>player06</span>
-                                <span class="rank-score">88</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>6.</span>
-                                <span>player1212</span>
-                                <span class="rank-score">79</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>7.</span>
-                                <span>player117</span>
-                                <span class="rank-score">77</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>8.</span>
-                                <span>player220</span>
-                                <span class="rank-score">72</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>9.</span>
-                                <span>player111</span>
-                                <span class="rank-score">64</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                                 
-                                <span>10.</span>
-                                <span>player11</span>
-                                <span class="rank-score">52</span>
+                                <span>-.</span>
+                                <span>---------------</span>
+                                <span class="rank-score">-</span>
                             </div>
                         </div>
-                        <div class="grid-rank rank-player-position">
-                            <span>25.</span>
-                            <span>eu</span>
-                            <span class="rank-score">14</span>
+                        <div class="grid-rank rank-player-position" id="ranksUserPositionGrid">
+                            <span>-.</span>
+                            <span>---------------</span>
+                            <span class="rank-score">-</span>
                         </div>
                     </div>
                 </div>
