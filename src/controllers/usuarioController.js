@@ -1,4 +1,6 @@
-const usuarioModel = require("../models/usuarioModel");
+const usuarioModel = require("../models/usuarioModel")
+const ranksModel = require("../models/ranksModel");
+const { json } = require("express");
 
 function autenticar(req, res) {
     let email = req.body.emailServer;
@@ -98,8 +100,76 @@ function addMatch(req, res) {
     }
 }
 
+async function searchProfile(req, res) {
+    const userId = req.params.userId
+
+    if (!userId) {
+        return res.status(400).send("userId undefined!")
+    }
+
+    try {
+        const [
+            usuario,
+            resumo,
+            rankVitoria,
+            rankWinStreak,
+            rankVitoriaRapida,
+            rankConquista,
+            desempenhoRecente,
+            distribuicaoResultados,
+            ultimasConquistas
+        ] = await Promise.all([
+            usuarioModel.getUserInfos(userId),
+            usuarioModel.getUserOverview(userId),
+
+            ranksModel.getUserInVictoryRank(userId),
+            ranksModel.getUserInWinStreakRank(userId),
+            ranksModel.getUserInFastestVictoryRank(userId),
+            ranksModel.getUserInAchievementRank(userId),
+
+            usuarioModel.getUserRecentPerformance(userId),
+            usuarioModel.getUserResultsDistribution(userId),
+            usuarioModel.getUserLatestAchievements(userId)
+        ])
+
+        if (usuario.length == 0) {
+            return res.status(404).send("Usuário não encontrado")
+        }
+
+        const resultado_final = {
+            usuario: usuario[0],
+
+            resumo: resumo[0] || {},
+
+            rankings: {
+                vitoria: rankVitoria[0] || {},
+                win_streak: rankWinStreak[0] || {},
+                vitoria_mais_rapida: rankVitoriaRapida[0] || {},
+                conquista: rankConquista[0] || {}
+            },
+
+            graficos: {
+                desempenho_recente: desempenhoRecente,
+                distribuicao_resultados: distribuicaoResultados[0] || {}
+            },
+
+            ultimasConquistas
+        }
+
+        res.status(200).json(resultado_final)
+
+    } catch (erro) {
+        console.log(erro)
+
+        res.status(500).json({
+            erro: erro.sqlMessage || erro.message
+        })
+    }
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    addMatch
+    addMatch,
+    searchProfile
 }

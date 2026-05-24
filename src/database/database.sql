@@ -50,7 +50,7 @@ CREATE TABLE usuario_conquista(
 -- =============================================
 
 -- ID | NOME | CONQUISTAS(ATUAIS E TOTAIS) | DATA DE CADASTRO
-CREATE OR REPLACE VIEW user_infos AS
+CREATE OR REPLACE VIEW vw_user_infos AS
 SELECT
 	u.id,
     u.username,
@@ -67,7 +67,7 @@ GROUP BY u.id;
 -- ============================================================
 
 -- ID | VITÓRIAS TOTAIS | DERROTAS TOTAIS | WIN STREAK ATUAL | MELHOR WIN STREAK | PARTIDAS JOGADAS | TEMPO TOTAL JOGADO
-CREATE OR REPLACE VIEW user_overview AS
+CREATE OR REPLACE VIEW vw_user_overview AS
 SELECT
 	u.id,
     u.vitorias + u.derrotas AS partidas,
@@ -75,30 +75,31 @@ SELECT
     u.derrotas,
     u.win_streak_atual,
     u.melhor_win_streak,
-    SUM(p.duracao_segundos) AS segundos_jogados
+    IFNULL(SUM(p.duracao_segundos), 0) AS segundos_jogados
 FROM usuario u
-JOIN partida p
+LEFT JOIN partida p
 	ON p.id_usuario = u.id
 GROUP BY u.id;
 
 -- ============================================================
 
 -- DESEMPENHO RECENTE (ÚLTIMAS 20 PARTIDAS)
-CREATE OR REPLACE VIEW user_recent_performance AS
+CREATE OR REPLACE VIEW vw_user_recent_performance AS
 SELECT * FROM partida
 ORDER BY data_partida DESC;
 
 -- CONSULTA NO BACKEND:
--- SELECT * FROM user_recent_performance
+-- SELECT * FROM vw_user_recent_performance
 -- WHERE id_usuario = ?
 -- LIMIT 20;
 
 -- ============================================================
 
 -- ÚLTIMAS CONQUISTAS
-CREATE OR REPLACE VIEW user_latest_achievements AS
+CREATE OR REPLACE VIEW vw_user_latest_achievements AS
 SELECT
 	uc.id_usuario,
+    c.nome_icone,
 	c.nome,
     c.descricao,
     uc.data_conquista
@@ -108,7 +109,7 @@ JOIN conquista c
 ORDER BY data_conquista DESC;
 
 -- CONSULTA NO BACKEND:
--- SELECT * FROM user_latest_achievements
+-- SELECT * FROM vw_user_latest_achievements
 -- WHERE id_usuario = ?
 -- LIMIT 3;
 
@@ -117,7 +118,7 @@ ORDER BY data_conquista DESC;
 -- --> RANKS
 
 -- VITÓRIAS TOTAIS
-CREATE OR REPLACE VIEW rank_vitoria AS
+CREATE OR REPLACE VIEW vw_rank_vitoria AS
 WITH ranking AS (
 	SELECT
 		id,
@@ -128,14 +129,14 @@ WITH ranking AS (
 )
 SELECT * FROM ranking;
 -- PEGAR TOP 10 DO RANK:
--- SELECT * FROM rank_vitoria LIMIT 10;
+-- SELECT * FROM vw_rank_vitoria LIMIT 10;
 
 -- PEGAR INFORMAÇÕES DO USUÁRIO NAQUELE RANK
--- SELECT * FROM rank_vitoria WHERE id = ?;
+-- SELECT * FROM vw_rank_vitoria WHERE id = ?;
 
 
 -- VITÓRIAS EM SEQUÊNCIA
-CREATE OR REPLACE VIEW rank_win_streak AS
+CREATE OR REPLACE VIEW vw_rank_win_streak AS
 WITH ranking AS (
 	SELECT
 		id,
@@ -146,36 +147,40 @@ WITH ranking AS (
 )
 SELECT * FROM ranking;
 -- PEGAR TOP 10 DO RANK:
--- SELECT * FROM rank_win_streak LIMIT 10;
+-- SELECT * FROM vw_rank_win_streak LIMIT 10;
 
 -- PEGAR INFORMAÇÕES DO USUÁRIO NAQUELE RANK
--- SELECT * FROM rank_win_streak WHERE id = ?;
+-- SELECT * FROM vw_rank_win_streak WHERE id = ?;
 
 
 -- VITÓRIAS MAIS RÁPIDAS
-CREATE OR REPLACE VIEW rank_vitoria_mais_rapida AS
+CREATE OR REPLACE VIEW vw_rank_vitoria_mais_rapida AS
 WITH ranking AS (
 	SELECT
 		u.id,
-        u.username,
-        MIN(p.duracao_segundos) AS pontuacao,
-        RANK() OVER (ORDER BY MIN(p.duracao_segundos) ASC) AS posicao
-    FROM partida p
-    JOIN usuario u
+		u.username,
+		COALESCE(MIN(p.duracao_segundos), 0) AS pontuacao,
+		RANK() OVER (ORDER BY
+			CASE
+				WHEN MIN(p.duracao_segundos) IS NULL THEN 999999
+				ELSE MIN(p.duracao_segundos)
+			END) AS posicao
+	FROM usuario u
+	LEFT JOIN partida p
 		ON p.id_usuario = u.id
-	WHERE p.resultado = 'VITORIA'
-	GROUP BY u.id
+		AND p.resultado = 'VITORIA'
+	GROUP BY u.id, u.username
 )
 SELECT * FROM ranking;
 -- PEGAR TOP 10 DO RANK:
--- SELECT * FROM rank_vitoria_mais_rapida LIMIT 10;
+-- SELECT * FROM vw_rank_vitoria_mais_rapida LIMIT 10;
 
 -- PEGAR INFORMAÇÕES DO USUÁRIO NAQUELE RANK
--- SELECT * FROM rank_vitoria_mais_rapida WHERE id = ?;
+-- SELECT * FROM vw_rank_vitoria_mais_rapida WHERE id = ?;
 
 
 -- MAIS CONQUISTAS
-CREATE OR REPLACE VIEW rank_conquista AS
+CREATE OR REPLACE VIEW vw_rank_conquista AS
 WITH ranking AS (
     SELECT
         u.id,

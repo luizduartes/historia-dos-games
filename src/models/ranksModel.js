@@ -2,7 +2,7 @@ const database = require("../database/config")
 
 function getVictoryRank() {
     let instrucaoSql = `
-        SELECT * FROM rank_vitoria LIMIT 10;
+        SELECT * FROM vw_rank_vitoria LIMIT 10;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -10,7 +10,7 @@ function getVictoryRank() {
 
 function getWinStreakRank() {
     let instrucaoSql = `
-        SELECT * FROM rank_win_streak LIMIT 10;
+        SELECT * FROM vw_rank_win_streak LIMIT 10;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -18,7 +18,7 @@ function getWinStreakRank() {
 
 function getFastestVictoryRank() {
     let instrucaoSql = `
-        SELECT * FROM rank_vitoria_mais_rapida LIMIT 10;
+        SELECT * FROM vw_rank_vitoria_mais_rapida LIMIT 10;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -26,7 +26,7 @@ function getFastestVictoryRank() {
 
 function getAchievementRank() {
     let instrucaoSql = `
-        SELECT * FROM rank_conquista LIMIT 10;
+        SELECT * FROM vw_rank_conquista LIMIT 10;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -36,7 +36,7 @@ function getAchievementRank() {
 
 function getUserInVictoryRank(userId) {
     let instrucaoSql = `
-        SELECT * FROM rank_vitoria WHERE id = ${userId};
+        SELECT * FROM vw_rank_vitoria WHERE id = ${userId};
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -44,7 +44,7 @@ function getUserInVictoryRank(userId) {
 
 function getUserInWinStreakRank(userId) {
     let instrucaoSql = `
-        SELECT * FROM rank_win_streak WHERE id = ${userId};
+        SELECT * FROM vw_rank_win_streak WHERE id = ${userId};
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -52,7 +52,7 @@ function getUserInWinStreakRank(userId) {
 
 function getUserInFastestVictoryRank(userId) {
     let instrucaoSql = `
-        SELECT * FROM rank_vitoria_mais_rapida WHERE id = ${userId};
+        SELECT * FROM vw_rank_vitoria_mais_rapida WHERE id = ${userId};
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -60,7 +60,7 @@ function getUserInFastestVictoryRank(userId) {
 
 function getUserInAchievementRank(userId) {
     let instrucaoSql = `
-        SELECT * FROM rank_conquista WHERE id = ${userId};
+        SELECT * FROM vw_rank_conquista WHERE id = ${userId};
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)

@@ -54,8 +54,59 @@ async function addMatch(id, playerScore, cpuScore, matchSeconds, matchResult) {
     }
 }
 
+// Funções para a tela de perfil
+function getUserInfos(userId) {
+    let instrucaoSql = `
+        SELECT * FROM vw_user_infos WHERE id = ${userId};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
+function getUserOverview(userId) {
+    let instrucaoSql = `
+        SELECT * FROM vw_user_overview WHERE id = ${userId};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
+function getUserRecentPerformance(userId) {
+    let instrucaoSql = `
+        SELECT * FROM vw_user_recent_performance
+        WHERE id_usuario = ${userId}
+        LIMIT 20;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
+function getUserResultsDistribution(userId) {
+    let instrucaoSql = `
+        SELECT vitorias + derrotas AS partidas, vitorias, derrotas FROM usuario
+        WHERE id = ${userId};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
+function getUserLatestAchievements(userId) {
+    let instrucaoSql = `
+        SELECT * FROM vw_user_latest_achievements
+        WHERE id_usuario = ${userId}
+        LIMIT 3;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    addMatch
+    addMatch,
+    getUserInfos,
+    getUserOverview,
+    getUserRecentPerformance,
+    getUserResultsDistribution,
+    getUserLatestAchievements
 }

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../js/charts.js" type="module" defer></script>
+    <script src="../js/user_profile.js" type="module" defer></script>
 </head>
 <body>
     <main class="centralized-main main-profile">
@@ -55,12 +55,12 @@
                             <div class="window-user-info-icon">
                                 <i class="fa-solid fa-user"></i>
                             </div>
-                            <div class="window-user-info-id">
-                                <span>ID: #1001</span>
+                            <div id="userId" class="window-user-info-id">
+                                <span>ID: #---</span>
                             </div>
                         </div>
                         <div class="window-user-info-right">
-                            <div class="window-user-info-name">USUARIO_TESTE</div>
+                            <div id="userUsername" class="window-user-info-name">----------</div>
                             <div class="window-user-info-description">DOS PÍXEIS DO PASSADO, SURGEM<br>AS LENDAS DO PRESENTE</div>
                             <div class="terminal-dashed-line"></div>
                             <div class="window-user-info-details-wrapper">
@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="detail-cell-text">
                                         <span class="detail-cell-text-title">CONQUISTAS</span>
-                                        <span class="detail-cell-text-content">14/28</span>
+                                        <span id="userAchievementsCount" class="detail-cell-text-content">--/--</span>
                                     </div>
                                 </div>
                                 <div class="window-user-info-detail-cell detail-cell-entry-date">
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="detail-cell-text">
                                         <span class="detail-cell-text-title">MEMBRO DESDE</span>
-                                        <span class="detail-cell-text-content">11/05/2026</span>
+                                        <span id="userCreatedAt" class="detail-cell-text-content">--/--/----</span>
                                     </div>
                                 </div>
                             </div>
@@ -93,42 +93,42 @@
                                 <div class="stat-card-title">VITÓRIAS TOTAIS</div>
                                 <div class="stat-card-content">
                                     <i class="fa-solid fa-trophy"></i>
-                                    <span class="stat-card-content-text">128</span>
+                                    <span id="overviewVictories" class="stat-card-content-text">--</span>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-card-title">DERROTAS TOTAIS</div>
                                 <div class="stat-card-content">
                                     <i class="fa-solid fa-skull"></i>
-                                    <span class="stat-card-content-text">37</span>
+                                    <span id="overviewDefeats" class="stat-card-content-text">--</span>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-card-title">WIN STREAK ATUAL</div>
                                 <div class="stat-card-content">
                                     <i class="fa-solid fa-fire"></i>
-                                    <span class="stat-card-content-text">7</span>
+                                    <span id="overviewCurrentStreak" class="stat-card-content-text">--</span>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-card-title">MELHOR WIN STREAK</div>
                                 <div class="stat-card-content">
                                     <i class="fa-solid fa-arrow-trend-up"></i>
-                                    <span class="stat-card-content-text">18</span>
+                                    <span id="overviewBestStreak" class="stat-card-content-text">--</span>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-card-title">PARTIDAS JOGADAS</div>
                                 <div class="stat-card-content">
                                     <i class="fa-solid fa-gamepad"></i>
-                                    <span class="stat-card-content-text">165</span>
+                                    <span id="overviewMatches" class="stat-card-content-text">--</span>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-card-title">TEMPO TOTAL JOGADO</div>
                                 <div class="stat-card-content">
                                     <i class="fa-solid fa-clock"></i>
-                                    <span class="stat-card-content-text">05:42:13</span>
+                                    <span id="overviewPlayTime" class="stat-card-content-text">--:--:--</span>
                                 </div>
                             </div>
                         </div>
@@ -143,22 +143,7 @@
                                     <i class="fa-solid fa-award"></i>
                                     <div class="rank-stat-card-content-wrapper">
                                         <div class="stat-card-title">MAIS CONQUISTAS</div>
-                                        <span class="stat-card-content-text">#342</span>
-                                    </div>
-                                </div>
-                                <div class="stat-card-rank-top">
-                                    <span>TOP 8%</span>
-                                    <div class="stat-card-rank-top-progress-bar">
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
+                                        <span id="rankAchievementPosition" class="stat-card-content-text">#--</span>
                                     </div>
                                 </div>
                             </div>
@@ -167,22 +152,7 @@
                                     <i class="fa-solid fa-trophy"></i>
                                     <div class="rank-stat-card-content-wrapper">
                                         <div class="stat-card-title">VITÓRIAS TOTAIS</div>
-                                        <span class="stat-card-content-text">#157</span>
-                                    </div>
-                                </div>
-                                <div class="stat-card-rank-top">
-                                    <span>TOP 3%</span>
-                                    <div class="stat-card-rank-top-progress-bar">
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
+                                        <span id="rankVictoryPosition" class="stat-card-content-text">#--</span>
                                     </div>
                                 </div>
                             </div>
@@ -191,22 +161,7 @@
                                     <i class="fa-solid fa-fire"></i>
                                     <div class="rank-stat-card-content-wrapper">
                                         <div class="stat-card-title">VITÓRIAS EM SEQUÊNCIA</div>
-                                        <span class="stat-card-content-text">#89</span>
-                                    </div>
-                                </div>
-                                <div class="stat-card-rank-top">
-                                    <span>TOP 2%</span>
-                                    <div class="stat-card-rank-top-progress-bar">
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
+                                        <span id="rankWinStreakPosition" class="stat-card-content-text">#--</span>
                                     </div>
                                 </div>
                             </div>
@@ -215,22 +170,7 @@
                                     <i class="fa-solid fa-stopwatch"></i>
                                     <div class="rank-stat-card-content-wrapper">
                                         <div class="stat-card-title">VITÓRIAS MAIS RÁPIDAS</div>
-                                        <span class="stat-card-content-text">#215</span>
-                                    </div>
-                                </div>
-                                <div class="stat-card-rank-top">
-                                    <span>TOP 3%</span>
-                                    <div class="stat-card-rank-top-progress-bar">
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell rank-top-progress-bar-cell-fill"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
-                                        <div class="stat-card-rank-top-progress-bar-cell"></div>
+                                        <span id="rankFastVictoryPosition" class="stat-card-content-text">#--</span>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +202,7 @@
                             <div class="chart-container results-distribution-chart-container">
                                 <canvas id="chartResultsDistribution"></canvas>
                                 <div class="results-distribution-chart-legend">
-                                    <span>165</span>
+                                    <span id="resultsDistributionTotal">--</span>
                                     <span>TOTAL</span>
                                 </div>
                             </div>
@@ -271,14 +211,14 @@
                                     <div class="legend-cell-indicator legend-cell-indicator-victory"></div>
                                     <div>
                                         <span>VITÓRIA<br></span>
-                                        <span>77.6% (128)</span>
+                                        <span id="resultsVictoryInfo">--% (--)</span>
                                     </div>
                                 </div>
                                 <div class="chart-window-content-legend-cell">
                                     <div class="legend-cell-indicator legend-cell-indicator-defeat"></div>
                                     <div>
                                         <span>DERROTA<br></span>
-                                        <span>22.4% (37)</span>
+                                        <span id="resultsDefeatInfo">--% (--)</span>
                                     </div>
                                 </div>
                             </div>
@@ -286,28 +226,14 @@
                     </div>
                     <div class="profile-box-main-content-window window-highlighted-achievements">
                         <span>ÚLTIMAS CONQUISTAS</span>
-                        <div class="achievements-card-wrapper">
-                            <div class="achievements-card">
+                        <div id="latestAchievements" class="achievements-card-wrapper">
+                            <!-- <div class="achievements-card">
                                 <i class="fa-solid fa-stopwatch achievements-card-icon"></i>
                                 <div class="achievements-card-text">
-                                    <span class="achievements-card-text-title">MARATONISTA</span>
-                                    <span class="achievements-card-text-description">Ganhe uma partida em até 200 segundos</span>
+                                    <span class="achievements-card-text-title">(nome)</span>
+                                    <span class="achievements-card-text-description">(descrição)</span>
                                 </div>
-                            </div>
-                            <div class="achievements-card">
-                                <i class="fa-solid fa-crown achievements-card-icon"></i>
-                                <div class="achievements-card-text">
-                                    <span class="achievements-card-text-title">REI DO PONG</span>
-                                    <span class="achievements-card-text-description">Win streak de 20 ou mais</span>
-                                </div>
-                            </div>
-                            <div class="achievements-card">
-                                <i class="fa-solid fa-crosshairs achievements-card-icon"></i>
-                                <div class="achievements-card-text">
-                                    <span class="achievements-card-text-title">CAÇADOR</span>
-                                    <span class="achievements-card-text-description">Vença 100 partidas</span>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

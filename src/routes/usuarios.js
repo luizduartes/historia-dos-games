@@ -16,4 +16,8 @@ router.post("/partida", function (req, res) {
     usuarioController.addMatch(req, res)
 })
 
+router.get("/perfil/:userId", function (req, res) {
+    usuarioController.searchProfile(req, res)
+})
+
 module.exports = router
