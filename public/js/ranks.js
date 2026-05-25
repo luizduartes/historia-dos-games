@@ -4,7 +4,7 @@ async function listRank(rankType) {
     let playerRankHtml = ""
     // ranksPositionsGrid.innerHTML = ""
 
-    let rankData = await fetch(`http://localhost:3333/ranks/${rankType}`)
+    let rankData = await fetch(`/ranks/${rankType}`)
 
     if (rankData.ok) {
         const rankJson = await rankData.json()
@@ -20,7 +20,7 @@ async function listRank(rankType) {
     }
 
     if (sessionStorage.ID_USUARIO) {
-        let rankUserData = await fetch(`http://localhost:3333/ranks/${rankType}/${sessionStorage.ID_USUARIO}`)
+        let rankUserData = await fetch(`/ranks/${rankType}/${sessionStorage.ID_USUARIO}`)
         
         if (rankUserData.ok) {
             const rankJson = await rankUserData.json()

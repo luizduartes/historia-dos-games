@@ -118,7 +118,7 @@ async function auth_login() {
     }
 
     try {
-        const resposta = await fetch("http://localhost:3333/usuarios/autenticar", {
+        const resposta = await fetch("/usuarios/autenticar", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -169,7 +169,7 @@ async function auth_register() {
     }
 
     try {
-        const resposta = await fetch("http://localhost:3333/usuarios/cadastrar", {
+        const resposta = await fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

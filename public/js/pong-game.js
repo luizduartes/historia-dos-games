@@ -338,7 +338,7 @@ async function saveMatch() {
     }
     
     try {
-        const resposta = await fetch("http://localhost:3333/usuarios/partida", {
+        const resposta = await fetch("/usuarios/partida", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
