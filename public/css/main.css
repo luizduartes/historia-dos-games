@@ -609,24 +609,32 @@ header {
             font-size: clamp(11px, 0.95vw, 15px);
         }
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
     }
+    
+}
 
-    .terminal-box:nth-child(1) {
-        min-width: max-content;
-        max-height: none;
-        justify-content: space-around;
-    }
+.terminal-box-max-content {
+    width: max-content;
+    /* max-height: none; */
+    justify-content: space-around;
+    white-space: nowrap;
+}
 
-    .terminal-box:nth-child(2) {
-        padding: 0;
-        overflow: hidden;
+.terminal-box-with-image {
+    padding: 0;
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
     }
+}
+
+.terminal-command-top-icon {
+    align-self: flex-start;
+    margin-top: 2px;
 }
 
 .terminal-box-topics {
