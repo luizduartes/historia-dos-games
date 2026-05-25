@@ -160,21 +160,19 @@ function renderRecentPerformanceChart(matches) {
     }
 
     const labels =
-        matches.map((_, i) => i + 1)
+        matches.map((_, i) => i + 1).reverse()
 
     const values =
         matches.map(match =>
-            match.resultado === "VITORIA"
-                ? match.pontuacao_player
-                : match.pontuacao_cpu
-        )
+            match.pontuacao_player
+        ).reverse()
 
     const colors =
         matches.map(match =>
             match.resultado === "VITORIA"
                 ? neonColor
                 : darkColor
-        )
+        ).reverse()
 
     recentPerformanceChart = new Chart(
         ctx_RecentPerformance,
