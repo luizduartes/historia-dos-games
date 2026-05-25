@@ -109,8 +109,11 @@ function loop() {
         ballX += ballVelocityX
         ballY += ballVelocityY
 
-        // Colisão da bola com a parede
-        if (ballX + ballRadius > canvas.width || ballX - ballRadius < 0) {
+        // Colisões da bola com a parede
+        if (ballX + ballRadius > canvas.width && ballVelocityX > 0) { // Parede da Direita
+            ballVelocityX *= -1
+        }
+        if (ballX - ballRadius < 0 && ballVelocityX < 0) { // Parede da Esquerda
             ballVelocityX *= -1
         }
 
