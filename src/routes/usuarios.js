@@ -24,6 +24,10 @@ router.get("/:userId/conquistas", function (req, res) {
     usuarioController.getAchievements(req, res)
 })
 
+router.get("/:userId/conquistas-bloqueadas", function (req, res) {
+    usuarioController.getLockAchievements(req, res)
+})
+
 router.post("/:userId/conquistas", function (req, res) {
     usuarioController.winAchievement(req, res)
 })

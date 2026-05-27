@@ -103,7 +103,7 @@ function getUserLatestAchievements(userId) {
 function getAchievements(userId) {
     let instrucaoSql = `
         SELECT
-            uc.id_conquista,
+            c.id,
             uc.data_conquista,
             c.nome,
             c.descricao,
@@ -112,6 +112,32 @@ function getAchievements(userId) {
         JOIN conquista c
             ON uc.id_conquista = c.id
         WHERE uc.id_usuario = ${userId};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
+function getLockAchievements(userId) {
+    let instrucaoSql = `
+        SELECT
+            c.id,
+            c.nome,
+            c.descricao,
+            c.nome_icone,
+            cc.tipo AS tipo_condicao,
+            cc.operador AS operador_condicao,
+            cc.valor AS valor_condicao
+        FROM conquista c
+        JOIN conquista_condicao cc
+            ON cc.id_conquista = c.id
+        WHERE c.id NOT IN (
+            SELECT
+                c.id
+            FROM usuario_conquista uc
+            RIGHT JOIN conquista c
+                ON uc.id_conquista = c.id
+            WHERE uc.id_usuario = ${userId}
+        );
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)
@@ -135,5 +161,6 @@ module.exports = {
     getUserResultsDistribution,
     getUserLatestAchievements,
     getAchievements,
+    getLockAchievements,
     winAchievement
 }

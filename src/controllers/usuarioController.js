@@ -129,6 +129,35 @@ function getAchievements(req, res) {
         )
 }
 
+function getLockAchievements(req, res) {
+    const userId = req.params.userId
+
+    if (!userId) {
+        return res.status(400).send("userId undefined!")
+    }
+
+    usuarioModel.getLockAchievements(userId)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado)
+                } else {
+                    res.status(204).send("Conquistas bloqueadas do usuário não encontradas!")
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro)
+                console.log(
+                    "Houve um erro ao buscar conquistas bloqueadas do usuário: ",
+                    erro.sqlMessage
+                )
+                res.status(500).json(erro.sqlMessage)
+            }
+        )
+}
+
 function winAchievement(req, res) {
     let userId = req.body.userIdServer
     let achievementId = req.body.achievementIdServer
@@ -226,5 +255,6 @@ module.exports = {
     addMatch,
     searchProfile,
     getAchievements,
+    getLockAchievements,
     winAchievement
 }
