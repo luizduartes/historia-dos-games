@@ -30,10 +30,18 @@ CREATE TABLE conquista(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     descricao VARCHAR(200) NOT NULL,
-    tipo VARCHAR(30) NOT NULL,
-    valor INT NOT NULL,
-    nome_icone VARCHAR(30) NOT NULL,
-    CONSTRAINT ctTipo CHECK(tipo IN ('VITORIA', 'WIN_STREAK', 'DURACAO', 'PARTIDAS', 'PLACAR'))
+    nome_icone VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE conquista_condicao(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(45) NOT NULL,
+	operador VARCHAR(2) NOT NULL,
+	valor VARCHAR(30) NOT NULL,
+	id_conquista INT NOT NULL,
+    CONSTRAINT ctFkConquista FOREIGN KEY (id_conquista) REFERENCES conquista(id),
+    CONSTRAINT ctTipo CHECK(tipo IN ('VITORIA', 'WIN_STREAK', 'DURACAO', 'PARTIDA', 'PONTOS_INICIAIS_CPU', 'PONTOS_INICIAIS_PLAYER', 'PONTOS_CPU', 'PONTOS_PLAYER')),
+    CONSTRAINT ctOperador CHECK(operador IN ('>', '>=', '<', '<=', '=='))
 );
 
 CREATE TABLE usuario_conquista(
@@ -42,7 +50,8 @@ CREATE TABLE usuario_conquista(
 	id_conquista INT NOT NULL,
     data_conquista DATETIME DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT ctIdUsuario FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-    CONSTRAINT ctIdConquista FOREIGN KEY (id_conquista) REFERENCES conquista(id)
+    CONSTRAINT ctIdConquista FOREIGN KEY (id_conquista) REFERENCES conquista(id),
+    CONSTRAINT ctUqUsuarioConquista UNIQUE(id_usuario, id_conquista)
 );
 
 -- =============================================
