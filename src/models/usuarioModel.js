@@ -100,6 +100,31 @@ function getUserLatestAchievements(userId) {
     return database.executar(instrucaoSql)
 }
 
+function getAchievements(userId) {
+    let instrucaoSql = `
+        SELECT
+            uc.id_conquista,
+            uc.data_conquista,
+            c.nome,
+            c.descricao,
+            c.nome_icone
+        FROM usuario_conquista uc
+        JOIN conquista c
+            ON uc.id_conquista = c.id
+        WHERE uc.id_usuario = ${userId};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
+function winAchievement(userId, achievementId) {
+    let instrucaoSql = `
+        INSERT INTO usuario_conquista (id_usuario, id_conquista) VALUES (${userId}, ${achievementId});
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql)
+    return database.executar(instrucaoSql)
+}
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -108,5 +133,7 @@ module.exports = {
     getUserOverview,
     getUserRecentPerformance,
     getUserResultsDistribution,
-    getUserLatestAchievements
+    getUserLatestAchievements,
+    getAchievements,
+    winAchievement
 }

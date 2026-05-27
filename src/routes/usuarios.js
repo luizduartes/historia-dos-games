@@ -20,4 +20,12 @@ router.get("/perfil/:userId", function (req, res) {
     usuarioController.searchProfile(req, res)
 })
 
+router.get("/:userId/conquistas", function (req, res) {
+    usuarioController.getAchievements(req, res)
+})
+
+router.post("/:userId/conquistas", function (req, res) {
+    usuarioController.winAchievement(req, res)
+})
+
 module.exports = router

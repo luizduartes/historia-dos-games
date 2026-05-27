@@ -100,6 +100,59 @@ function addMatch(req, res) {
     }
 }
 
+function getAchievements(req, res) {
+    const userId = req.params.userId
+
+    if (!userId) {
+        return res.status(400).send("userId undefined!")
+    }
+
+    usuarioModel.getAchievements(userId)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado)
+                } else {
+                    res.status(204).send("Conquistas do usuário não encontradas!")
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro)
+                console.log(
+                    "Houve um erro ao buscar conquistas do usuário: ",
+                    erro.sqlMessage
+                )
+                res.status(500).json(erro.sqlMessage)
+            }
+        )
+}
+
+function winAchievement(req, res) {
+    let userId = req.body.userIdServer
+    let achievementId = req.body.achievementIdServer
+
+    if (userId == undefined) {
+        res.status(400).send("Seu userId está undefined!")
+    } else if (achievementId == undefined) {
+        res.status(400).send("Seu achievementId está undefined!")
+    } else {
+        usuarioModel.winAchievement(userId, achievementId)
+            .then(
+                function (resultado) {
+                    res.json(resultado)
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro)
+                    console.log("\nHouve um erro ao usuário salvar conquista ganha! Erro: ", erro.sqlMessage)
+                    res.status(500).json(erro.sqlMessage)
+                }
+            )
+    }
+}
+
 async function searchProfile(req, res) {
     const userId = req.params.userId
 
@@ -171,5 +224,7 @@ module.exports = {
     autenticar,
     cadastrar,
     addMatch,
-    searchProfile
+    searchProfile,
+    getAchievements,
+    winAchievement
 }
