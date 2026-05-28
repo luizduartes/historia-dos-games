@@ -1,4 +1,5 @@
 import { changeToPage } from "./utils.js";
+import { checkAchievementsConditions } from "./pong-achievements.js";
 
 // Redireciona o usuário caso não esteja logado
 if (!sessionStorage.ID_USUARIO) {
@@ -13,6 +14,20 @@ const ctx = canvas.getContext("2d")
 const eRoot = document.documentElement
 const styleRoot = getComputedStyle(eRoot)
 const neonColor = styleRoot.getPropertyValue('--color-primary').trim()
+
+// Objeto para ser mandado ao salvar partida para verificar novas conquistas desbloqueadas
+let achievementsCheckData = {
+    "VITORIA": 0,
+    "WIN_STREAK": 0,
+    "DURACAO": 0,
+    "PARTIDA": 0,
+    "VENCEU_PARTIDA": 0,
+    "TEMPO_JOGADO": 0,
+    "PONTOS_INICIAIS_CPU": 0,
+    "PONTOS_INICIAIS_PLAYER": 0,
+    "PONTOS_CPU": 0,
+    "PONTOS_PLAYER": 0
+}
 
 // Placar
 let playerScore = 0
@@ -182,6 +197,9 @@ function loop() {
 
 function playerGoal() {
     playerScore++
+    if (cpuScore <= 0) {
+        achievementsCheckData["PONTOS_INICIAIS_PLAYER"] ++
+    }
     playerScoreText.innerText = String(playerScore).padStart(2, "0")
 
     if (playerScore >= 5) {
@@ -193,6 +211,9 @@ function playerGoal() {
 
 function cpuGoal() {
     cpuScore++
+    if (playerScore <= 0) {
+        achievementsCheckData["PONTOS_INICIAIS_CPU"] ++
+    }
     cpuScoreText.innerText = String(cpuScore).padStart(2, "0")
 
     if (cpuScore >= 5) {
@@ -204,6 +225,20 @@ function cpuGoal() {
 
 // Limpando variáveis para recomeçar o jogo
 function cleanVariables() {
+    // Dados verificados nas conquistas
+    achievementsCheckData = {
+        "VITORIA": 0,
+        "WIN_STREAK": 0,
+        "DURACAO": 0,
+        "PARTIDA": 0,
+        "VENCEU_PARTIDA": 0,
+        "TEMPO_JOGADO": 0,
+        "PONTOS_INICIAIS_CPU": 0,
+        "PONTOS_INICIAIS_PLAYER": 0,
+        "PONTOS_CPU": 0,
+        "PONTOS_PLAYER": 0
+    }
+
     // Estados
     paused = false
     isPlaying = false
@@ -358,6 +393,22 @@ async function saveMatch() {
     } catch (erro) {
         console.error("Erro ao cadastrar partida!")
     }
+
+    const usuarioStatsResponse = await fetch(`/usuarios/perfil/${idVar}`)
+    const usuarioStatsData = await usuarioStatsResponse.json()
+
+    achievementsCheckData["PARTIDA"] = usuarioStatsData.resumo.partidas
+    achievementsCheckData["VITORIA"] = usuarioStatsData.resumo.vitorias
+    achievementsCheckData["WIN_STREAK"] = usuarioStatsData.resumo.melhor_win_streak
+    achievementsCheckData["TEMPO_JOGADO"] = Number(usuarioStatsData.resumo.segundos_jogados)
+
+    achievementsCheckData["VENCEU_PARTIDA"] = playerScore > cpuScore ? 1 : 0
+    achievementsCheckData["DURACAO"] = matchSeconds
+    achievementsCheckData["PONTOS_PLAYER"] = playerScore
+    achievementsCheckData["PONTOS_CPU"] = cpuScore
+
+    console.log(achievementsCheckData)
+    checkAchievementsConditions(achievementsCheckData)
 
     return false;
 }

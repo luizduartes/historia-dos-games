@@ -40,8 +40,8 @@ CREATE TABLE conquista_condicao(
 	valor VARCHAR(30) NOT NULL,
 	id_conquista INT NOT NULL,
     CONSTRAINT ctFkConquista FOREIGN KEY (id_conquista) REFERENCES conquista(id),
-    CONSTRAINT ctTipo CHECK(tipo IN ('VITORIA', 'WIN_STREAK', 'DURACAO', 'PARTIDA', 'PONTOS_INICIAIS_CPU', 'PONTOS_INICIAIS_PLAYER', 'PONTOS_CPU', 'PONTOS_PLAYER')),
-    CONSTRAINT ctOperador CHECK(operador IN ('>', '>=', '<', '<=', '=='))
+    CONSTRAINT ctTipo CHECK(tipo IN ('VITORIA', 'WIN_STREAK', 'DURACAO', 'PARTIDA', 'VENCEU_PARTIDA', 'TEMPO_JOGADO', 'PONTOS_INICIAIS_CPU', 'PONTOS_INICIAIS_PLAYER', 'PONTOS_CPU', 'PONTOS_PLAYER')),
+    CONSTRAINT ctOperador CHECK(operador IN ('>=', '<=', '=='))
 );
 
 CREATE TABLE usuario_conquista(

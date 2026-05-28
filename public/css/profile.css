@@ -343,7 +343,8 @@
 }
 
 .achievements-card-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     flex: 1;
     padding: .5rem 0;
