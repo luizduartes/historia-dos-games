@@ -2,7 +2,7 @@
 
 > **“Os jogos que marcaram gerações começaram como simples experimentos em telas limitadas. Hoje, eles contam histórias, criam memórias e inspiram pessoas — inclusive eu.”**
 
-![Status do Projeto](https://img.shields.io/badge/Status-Concluído-00ff99?style=for-the-badge\&logoColor=black)
+![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-FF00FF?style=for-the-badge&logoColor=white)
 
 **História dos Games** é um projeto web criado para transformar a evolução dos videogames em uma experiência interativa, misturando navegação dinâmica, estética retrô e um sistema jogável dentro do próprio site.
 
@@ -81,7 +81,6 @@ O objetivo visual era fazer o sistema parecer um “console futurista retrô”,
 
 * MySQL Server
 * Views SQL
-* Relacionamentos relacionais
 
 ---
 
