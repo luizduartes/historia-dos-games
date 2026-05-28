@@ -1,44 +1,92 @@
-# 🕹️ A História dos Jogos: Uma Jornada Horizontal
+# 🎮 História dos Games
 
-> **"Jogos não são apenas linhas de código; são janelas para memórias, desafios superados e a evolução da nossa própria criatividade."**
+> **“Os jogos que marcaram gerações começaram como simples experimentos em telas limitadas. Hoje, eles contam histórias, criam memórias e inspiram pessoas — inclusive eu.”**
 
-![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-FF00FF?style=for-the-badge&logoColor=white)
+![Status do Projeto](https://img.shields.io/badge/Status-Concluído-00ff99?style=for-the-badge\&logoColor=black)
 
-Este é um projeto acadêmico individual que explora as raízes da indústria dos games, conectando a evolução tecnológica dos primeiros computadores à minha própria trajetória e paixão pelo desenvolvimento.
-
----
-
-## 📖 Sobre o Projeto
-
-O site foi concebido como uma **experiência linear e imersiva**. Ao contrário da navegação vertical tradicional, aqui o usuário "caminha" pela história através de um **scroll horizontal**, simulando uma linha do tempo viva (e um aceno aos clássicos jogos *side-scrolling*).
-
-### Principais Funcionalidades:
-* **Storytelling Interativo:** Uma narrativa que percorre desde os mainframes dos anos 60 (*Spacewar!*) até a consolidação dos arcades.
-* **O Jogo (Pong):** Uma réplica funcional do clássico de 1972, construída puramente com manipulação de **DOM (JavaScript)**, sem o uso de engines externas.
-* **Dashboard de Performance:** Uma área restrita com sistema de login para que o usuário acompanhe seu histórico de pontuações e veja o ranking global.
-* **Barra de Progresso Dinâmica:** Uma linha de progresso fixa no topo que indica visualmente em qual "capítulo" da história o usuário se encontra.
+**História dos Games** é um projeto web criado para transformar a evolução dos videogames em uma experiência interativa, misturando navegação dinâmica, estética retrô e um sistema jogável dentro do próprio site.
 
 ---
 
-## 🎨 Identidade Visual
+# 📖 Sobre o Projeto
 
-O design segue uma estética **Retro-Minimalista de Alto Contraste**, utilizando a paleta **CGA Legacy** para evocar nostalgia com um acabamento moderno.
+A ideia do projeto surgiu da vontade de unir duas coisas que sempre fizeram parte da minha vida: jogos e programação.
 
-* **Background:** `#121212` (Black Out) – Profundidade e foco total no conteúdo.
-* **Primary:** `#00CCFF` (Sky Blue Neon) – Usado para títulos e fluxo de navegação.
-* **Accent:** `#0066FF` (Deep Neon Blue) – Usado para elementos de ação, destaque e a bolinha do jogo.
-* **Tipografia:** *Space Grotesk* – Uma fonte geométrica que une a precisão técnica ao design contemporâneo.
+Ao invés de apresentar a história dos games em um formato tradicional, o site busca fazer o usuário “participar” dessa jornada através de uma interface inspirada em sistemas antigos, animações, transições dinâmicas e um minigame integrado ao sistema.
 
----
-
-## ❤️ Conexão Pessoal
-
-Para mim, os games sempre foram o primeiro ponto de contato com a lógica e a tecnologia. Este projeto é uma forma de documentar como o brilho de uma tela CRT na infância se transformou no desejo de construir sistemas e interfaces hoje.
+O projeto foi desenvolvido inteiramente com tecnologias web, sem utilização de engines externas.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+# 🕹️ Funcionalidades
 
-* **HTML5:** Estrutura semântica para acessibilidade e SEO.
-* **CSS3:** Layouts estilizados com `Flexbox`, Scroll dinâmico e animações Neon.
-* **JavaScript (Vanilla):** Lógica do jogo, manipulação de DOM e controle do scroll horizontal.
+* Sistema de cadastro e login
+* Perfil de usuário
+* Sistema de rankings
+* Sistema de conquistas
+* Histórico de partidas
+* Dashboard com gráficos de desempenho
+* Navegação interativa pelas eras dos videogames
+* Pong jogável diretamente no navegador
+
+---
+
+# 🏆 Sistema de Conquistas
+
+O site possui um sistema de conquistas dinâmico baseado nas ações do jogador durante as partidas.
+
+Alguns exemplos:
+
+* vencer partidas
+* alcançar win streaks
+* vencer sem sofrer pontos
+* partidas rápidas
+* viradas históricas
+* tempo total jogado
+
+As conquistas são verificadas automaticamente após cada partida e exibidas visualmente durante a gameplay.
+
+---
+
+# 🎨 Visual do Projeto
+
+A interface foi inspirada em:
+
+* terminais retrô
+* arcades clássicos
+* estética cyberpunk
+* interfaces neon
+* pixel art
+
+O objetivo visual era fazer o sistema parecer um “console futurista retrô”, misturando nostalgia com uma identidade mais moderna.
+
+---
+
+# 🛠️ Tecnologias Utilizadas
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* Chart.js
+
+### Backend
+
+* Node.js
+* Express
+* MySQL2
+
+### Banco de Dados
+
+* MySQL Server
+* Views SQL
+* Relacionamentos relacionais
+
+---
+
+# ❤️ Conexão Pessoal
+
+Os jogos sempre foram meu primeiro contato com tecnologia e criatividade. Muito antes de entender programação, eu já queria descobrir como aqueles sistemas funcionavam por trás das telas.
+
+Esse projeto acabou se tornando uma forma de juntar essa curiosidade antiga com tudo que venho aprendendo no desenvolvimento de software.
