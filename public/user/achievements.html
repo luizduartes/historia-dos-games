@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História dos Jogos</title>
+    <link rel="icon" type="image/png" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/user-profile.css">
+    <link rel="stylesheet" href="../css/user-achievements.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/user-achievements.js" type="module" defer></script>
+    <!-- <script src="../js/user-profile.js" type="module" defer></script> -->
+</head>
+<body>
+    <main class="centralized-main main-profile">
+        <div class="terminal-box decoration-terminal-box profile-box">
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon1"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon2"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon3"></i>
+            <i class="fa-solid fa-chevron-left corner-icon corner-icon4"></i>
+
+            <div class="profile-box-top">
+                <div class="profile-box-top-left">
+                    <div class="terminal-command">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>CONQUISTAS</span>
+                    </div>
+                </div>
+                <div class="profile-box-top-right">
+                    <span class="terminal-text">SISTEMA HISTGAMES v1.0</span>
+                    <div class="terminal-box-top-buttons">
+                        <button class="terminal-box-top-button terminal-box-top-disabled-button">
+                            <i class="fa-solid fa-window-minimize"></i>
+                        </button>
+                        <button class="terminal-box-top-button terminal-box-top-disabled-button">
+                            <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                        </button>
+                        <a href="../index.html">
+                            <button class="terminal-box-top-button">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal-line"></div>
+
+            <div class="profile-box-main-content achievements-box-main-content">
+                <div class="user-overview-container">
+                    <div class="user-basic-infos">
+                        <i class="fa-solid fa-user"></i>
+                        <div>
+                            <span id="userUsername">USUARIO_TESTE</span>
+                            <span id="userId">ID: #1001</span>
+                        </div>
+                    </div>
+                    <div class="terminal-box user-resume">
+                        <span>RESUMO</span>
+                        <div class="terminal-dashed-line"></div>
+                        <div class="user-resume-content">
+                            <div class="user-resume-row">
+                                <div>
+                                    <i class="fa-solid fa-trophy"></i>
+                                    <span class="user-resume-row-title">CONQUISTAS</span>
+                                </div>
+                                <span id="userAchievementsCount">--/--</span>
+                            </div>
+                            <div class="user-resume-row">
+                                <div>
+                                    <i class="fa-solid fa-bullseye"></i>
+                                    <span class="user-resume-row-title">DESBLOQUEADAS</span>
+                                </div>
+                                <span id="userAchievementsPercent">--/--</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="terminal-box user-overall-progress">
+                        <span>PROGRESSO GERAL</span>
+                        <div class="user-overall-progress-content">
+                            <div class="chart-container results-distribution-chart-container achievements-chart-container">
+                                <canvas id="chartAchievementsPercent"></canvas>
+                                <div class="results-distribution-chart-legend">
+                                    <span id="resultsAchievementsPercent">50%</span>
+                                </div>
+                            </div>
+                            <span>Continue jogando para descobrir novas conquistas!</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="achievements-container"></div>
+            </div>
+
+            <div class="terminal-dashed-line"></div>
+
+            <div class="profile-box-bottom">
+                <div class="terminal-command">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>DICA: COMPLETE CONQUISTAS PARA GANHAR PONTOS E SUBIR NO RANKING!</span>
+                </div>
+                <div class="profile-box-bottom-buttons">
+                    <a href="./profile.html">
+                        <button class="profile-box-bottom-button">
+                            <i class="fa-solid fa-angle-left"></i>
+                            <span>VOLTAR PARA O PERFIL</span>
+                        </button>
+                    </a>
+                    <a href="../pong/game.html">
+                        <button class="profile-box-bottom-button">
+                            <i class="fa-solid fa-play"></i>
+                            <span>JOGAR O PONG!</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,91 @@
+.achievements-box-main-content {
+    flex-direction: row;
+}
+
+.user-overview-container {
+    flex-shrink: 0;
+    border: 1px solid var(--color-primary-dark);
+    padding: 1rem;
+    border-radius: 6px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: min-content;
+}
+
+.user-basic-infos {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+
+    i {
+        font-size: 70px;
+        border-right: 1px solid var(--color-primary-dark);
+        padding-right: 1rem;
+        margin-right: 1rem;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+}
+
+#userUsername {
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.user-resume {
+    width: 100%;
+}
+
+.user-resume-content {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.user-resume-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    justify-content: space-between;
+
+    div {
+        display: flex;
+        align-items: center;
+
+        i {
+            font-size: 36px;
+            width: 50px;
+            color: var(--color-primary);
+        }
+    }
+}
+
+.user-resume-row-title {
+
+}
+
+#userAchievementsCount {
+
+}
+
+.user-overall-progress {
+    overflow: hidden;
+}
+
+.user-overall-progress-content {
+
+}
+
+.achievements-chart-container {
+    width: 90%;
+    height: 100px;
+    margin: .5rem 0;
+}

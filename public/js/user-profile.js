@@ -227,11 +227,7 @@ function renderRecentPerformanceChart(matches) {
 // ======================================
 // DISTRIBUIÇÃO RESULTADOS
 // ======================================
-function renderResultsDistributionChart(
-    victories,
-    defeats
-) {
-
+function renderResultsDistributionChart(victories,defeats) {
     if (resultsDistributionChart) {
         resultsDistributionChart.destroy()
     }

@@ -1,5 +1,5 @@
 import { changeToPage } from "./utils.js";
-import { checkAchievementsConditions } from "./pong_achievements.js";
+import { checkAchievementsConditions } from "./pong-achievements.js";
 
 // Redireciona o usuário caso não esteja logado
 if (!sessionStorage.ID_USUARIO) {
