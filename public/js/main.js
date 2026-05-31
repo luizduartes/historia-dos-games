@@ -21,10 +21,10 @@ loginButton.addEventListener('click', () => {
 
 logoutButton.addEventListener('click', () => {
     sessionStorage.clear()
-    location.reload()
+    updateUserOnPage()
 })
 
-function updateUsernameOnPage() {
+function updateUserOnPage() {
     welcomeMessage.innerText = sessionStorage.NOME_USUARIO ? `BEM-VINDO, ${String(sessionStorage.NOME_USUARIO).toUpperCase()}` : `BEM-VINDO, EXPLORADOR`
     userButtonMessage.innerText = sessionStorage.NOME_USUARIO ? `USUÁRIO: ${String(sessionStorage.NOME_USUARIO).toUpperCase()}` : `USUÁRIO: CONVIDADO`
 
@@ -42,4 +42,4 @@ const nextSectionButton = document.getElementById("next-section-button")
 previousSectionButton.addEventListener('click', previousSection)
 nextSectionButton.addEventListener('click', nextSection)
 
-updateUsernameOnPage()
+updateUserOnPage()
