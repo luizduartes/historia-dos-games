@@ -674,3 +674,8 @@ header {
 a {
     text-decoration: none;
 }
+
+#userButtonsWrapper {
+    display: flex;
+    gap: 1rem;
+}

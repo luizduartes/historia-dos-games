@@ -135,7 +135,7 @@ async function auth_login() {
 
             showAcceptMessage("ACESSO CONCEDIDO", "USUÁRIO LOGADO COM SUCESSO!<br>ENTRANDO NO SISTEMA...")
 
-            setTimeout(() => { changeToPage('../user/profile.html'); }, 2000)
+            setTimeout(() => { changeToPage('../index.html'); }, 2000)
         } else {
             showErrorMessage("ERRO DE AUTENTICAÇÃO", "USUÁRIO OU SENHA INCORRETO(S).<br>VERIFIQUE OS DADOS INFORMADOS E TENTE NOVAMENTE")
         }

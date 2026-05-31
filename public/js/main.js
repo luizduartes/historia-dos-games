@@ -19,9 +19,20 @@ loginButton.addEventListener('click', () => {
     }
 })
 
+logoutButton.addEventListener('click', () => {
+    sessionStorage.clear()
+    location.reload()
+})
+
 function updateUsernameOnPage() {
     welcomeMessage.innerText = sessionStorage.NOME_USUARIO ? `BEM-VINDO, ${String(sessionStorage.NOME_USUARIO).toUpperCase()}` : `BEM-VINDO, EXPLORADOR`
     userButtonMessage.innerText = sessionStorage.NOME_USUARIO ? `USUÁRIO: ${String(sessionStorage.NOME_USUARIO).toUpperCase()}` : `USUÁRIO: CONVIDADO`
+
+    if (sessionStorage.NOME_USUARIO) {
+        logoutButton.style.display = "flex"
+    } else {
+        logoutButton.style.display = "none"
+    }
 }
 
 // Função de click para os botões de mudar de seção
