@@ -104,14 +104,15 @@ function getAchievements(userId) {
     let instrucaoSql = `
         SELECT
             c.id,
-            uc.data_conquista,
+            DATE_FORMAT(uc.data_conquista, '%d/%m/%Y %H:%i') AS data_conquista,
             c.nome,
             c.descricao,
             c.nome_icone
         FROM usuario_conquista uc
         JOIN conquista c
             ON uc.id_conquista = c.id
-        WHERE uc.id_usuario = ${userId};
+        WHERE uc.id_usuario = ${userId}
+        ORDER BY uc.data_conquista DESC;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql)
     return database.executar(instrucaoSql)

@@ -110,11 +110,7 @@ function getAchievements(req, res) {
     usuarioModel.getAchievements(userId)
         .then(
             function (resultado) {
-                if (resultado.length > 0) {
-                    res.status(200).json(resultado)
-                } else {
-                    res.status(204).send("Conquistas do usuário não encontradas!")
-                }
+                res.status(200).json(resultado)
             }
         )
         .catch(
@@ -139,11 +135,7 @@ function getLockAchievements(req, res) {
     usuarioModel.getLockAchievements(userId)
         .then(
             function (resultado) {
-                if (resultado.length > 0) {
-                    res.status(200).json(resultado)
-                } else {
-                    res.status(204).send("Conquistas bloqueadas do usuário não encontradas!")
-                }
+                res.status(200).json(resultado)
             }
         )
         .catch(

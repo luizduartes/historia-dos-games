@@ -55,8 +55,8 @@
                     <div class="user-basic-infos">
                         <i class="fa-solid fa-user"></i>
                         <div>
-                            <span id="userUsername">USUARIO_TESTE</span>
-                            <span id="userId">ID: #1001</span>
+                            <span id="userUsernameText">------------</span>
+                            <span id="userIdText">ID: #--</span>
                         </div>
                     </div>
                     <div class="terminal-box user-resume">
@@ -68,14 +68,14 @@
                                     <i class="fa-solid fa-trophy"></i>
                                     <span class="user-resume-row-title">CONQUISTAS</span>
                                 </div>
-                                <span id="userAchievementsCount">--/--</span>
+                                <span id="userAchievementsCount" class="achievement-kpi">--/--</span>
                             </div>
                             <div class="user-resume-row">
                                 <div>
                                     <i class="fa-solid fa-bullseye"></i>
                                     <span class="user-resume-row-title">DESBLOQUEADAS</span>
                                 </div>
-                                <span id="userAchievementsPercent">--/--</span>
+                                <span id="userAchievementsPercent" class="achievement-kpi">--%</span>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                             <div class="chart-container results-distribution-chart-container achievements-chart-container">
                                 <canvas id="chartAchievementsPercent"></canvas>
                                 <div class="results-distribution-chart-legend">
-                                    <span id="resultsAchievementsPercent">50%</span>
+                                    <span id="resultsAchievementsPercent">--%</span>
                                 </div>
                             </div>
                             <span>Continue jogando para descobrir novas conquistas!</span>
@@ -96,14 +96,14 @@
                     <div class="unlocked-achievements-container">
                         <div class="achievement-box-title">
                             <span>CONQUISTAS DESBLOQUEADAS</span>
-                            <span class="achievement-box-title-muted">(14/28)</span>
+                            <span class="achievement-box-title-muted" id="unlockedAchievementsCountText">(--/--)</span>
                         </div>
-                        <div class="achievements-container-main-content">
+                        <div class="achievements-container-main-content" id="unlockedAchievementsContainerMainContent">
                             <button class="achievement-navigation-button achievement-navigation-button--disabled" id="achievementNavigationPreviousButton">
                                 <i class="fa-solid fa-angle-left"></i>
                             </button>
                             <div class="achievements-wrapper-viewport" id="achievementsWrapperViewport">
-                                <div class="achievements-wrapper">
+                                <div class="achievements-wrapper" id="unlockedAchievementsWrapper">
                                     <div class="achievement-card">
                                         <div class="achievement-card-top">
                                             <i class="fa-solid fa-trophy"></i>
@@ -209,18 +209,21 @@
                                 <i class="fa-solid fa-angle-right"></i>
                             </button>
                         </div>
+                        <div id="noUnlockedAchievementsMessage" class="no-achievements-message">
+                            <span>SEM CONQUISTAS DESBLOQUEADAS!<br>JOGUE O PONG PARA DESBLOQUEAR NOVAS CONQUISAS.</span>
+                        </div>
                     </div>
                     <div class="locked-achievements-container">
                         <div class="achievement-box-title">
-                            <span>CONQUISTAS DESBLOQUEADAS</span>
-                            <span class="achievement-box-title-muted">(14/28)</span>
+                            <span>CONQUISTAS BLOQUEADAS</span>
+                            <span class="achievement-box-title-muted" id="lockedAchievementsCountText">(--/--)</span>
                         </div>
-                        <div class="achievements-container-main-content">
+                        <div class="achievements-container-main-content" id="lockedAchievementsContainerMainContent">
                             <button class="achievement-navigation-button achievement-navigation-button--disabled" id="lockedAchievementNavigationPreviousButton">
                                 <i class="fa-solid fa-angle-left"></i>
                             </button>
                             <div class="achievements-wrapper-viewport" id="lockedAchievementsWrapperViewport">
-                                <div class="achievements-wrapper">
+                                <div class="achievements-wrapper" id="lockedAchievementsWrapper">
                                     <div class="achievement-card locked-achievement-card">
                                         <div class="achievement-card-top">
                                             <i class="fa-solid fa-lock"></i>
@@ -266,6 +269,9 @@
                             <button class="achievement-navigation-button" id="lockedAchievementNavigationNextButton">
                                 <i class="fa-solid fa-angle-right"></i>
                             </button>
+                        </div>
+                        <div id="noLockedAchievementsMessage" class="no-achievements-message">
+                            <span>SEM CONQUISTAS BLOQUEADAS!<br>PARECE QUE VOCÊ JÁ POSSUI TODAS AS CONQUISTAS DO PONG.</span>
                         </div>
                     </div>
                 </div>

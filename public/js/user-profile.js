@@ -1,4 +1,4 @@
-import { changeToPage, formatSeconds } from "./utils.js";
+import { changeToPage, formatSeconds } from "./utils.js"
 
 searchProfile()
 
@@ -21,82 +21,59 @@ function renderProfile(data) {
     // =========================
     userId.innerHTML = `<span>ID: #${data.usuario.id}</span>`
 
-    userUsername.innerText =
-        data.usuario.username
+    userUsername.innerText = data.usuario.username
 
-    userAchievementsCount.innerText =
-        `${data.usuario.qtd_conquista}/${data.usuario.conquista_total}`
+    userAchievementsCount.innerText = `${data.usuario.qtd_conquista}/${data.usuario.conquista_total}`
 
-    userCreatedAt.innerText =
-        data.usuario.criado_em
+    userCreatedAt.innerText = data.usuario.criado_em
 
 
     // =========================
     // VISÃO GERAL
     // =========================
-    overviewVictories.innerText =
-        data.resumo.vitorias
+    overviewVictories.innerText = data.resumo.vitorias
 
-    overviewDefeats.innerText =
-        data.resumo.derrotas
+    overviewDefeats.innerText = data.resumo.derrotas
 
-    overviewCurrentStreak.innerText =
-        data.resumo.win_streak_atual
+    overviewCurrentStreak.innerText = data.resumo.win_streak_atual
 
-    overviewBestStreak.innerText =
-        data.resumo.melhor_win_streak
+    overviewBestStreak.innerText = data.resumo.melhor_win_streak
 
-    overviewMatches.innerText =
-        data.resumo.partidas
+    overviewMatches.innerText = data.resumo.partidas
 
-    overviewPlayTime.innerText =
-        formatSeconds(Number(data.resumo.segundos_jogados))
+    overviewPlayTime.innerText = formatSeconds(Number(data.resumo.segundos_jogados))
 
 
     // =========================
     // RANKINGS
     // =========================
-    rankAchievementPosition.innerText =
-        `#${data.rankings.conquista.posicao}`
+    rankAchievementPosition.innerText = `#${data.rankings.conquista.posicao}`
 
-    rankVictoryPosition.innerText =
-        `#${data.rankings.vitoria.posicao}`
+    rankVictoryPosition.innerText = `#${data.rankings.vitoria.posicao}`
 
-    rankWinStreakPosition.innerText =
-        `#${data.rankings.win_streak.posicao}`
+    rankWinStreakPosition.innerText = `#${data.rankings.win_streak.posicao}`
 
-    rankFastVictoryPosition.innerText =
-        `#${data.rankings.vitoria_mais_rapida.posicao}`
+    rankFastVictoryPosition.innerText = `#${data.rankings.vitoria_mais_rapida.posicao}`
 
 
     // =========================
     // DISTRIBUIÇÃO
     // =========================
-    const dist =
-        data.graficos.distribuicao_resultados
+    const dist = data.graficos.distribuicao_resultados
 
     const total = dist.partidas
     const victories = dist.vitorias
     const defeats = dist.derrotas
 
-    const victoryPercent =
-        total > 0
-            ? ((victories / total) * 100).toFixed(1)
-            : 0
+    const victoryPercent = total > 0 ? ((victories / total) * 100).toFixed(1) : 0
 
-    const defeatPercent =
-        total > 0
-            ? ((defeats / total) * 100).toFixed(1)
-            : 0
+    const defeatPercent = total > 0 ? ((defeats / total) * 100).toFixed(1) : 0
 
-    resultsDistributionTotal.innerText =
-        total
+    resultsDistributionTotal.innerText = total
 
-    resultsVictoryInfo.innerText =
-        `${victoryPercent}% (${victories})`
+    resultsVictoryInfo.innerText = `${victoryPercent}% (${victories})`
 
-    resultsDefeatInfo.innerText =
-        `${defeatPercent}% (${defeats})`
+    resultsDefeatInfo.innerText = `${defeatPercent}% (${defeats})`
 
 
     // =========================
@@ -136,8 +113,8 @@ function renderProfile(data) {
     )
 }
 
-const ctx_RecentPerformance = document.getElementById("chartRecentPerformance");
-const ctx_chartResultsDistribution = document.getElementById("chartResultsDistribution");
+const ctx_RecentPerformance = document.getElementById("chartRecentPerformance")
+const ctx_chartResultsDistribution = document.getElementById("chartResultsDistribution")
 
 const eRoot = document.documentElement
 const styleRoot = getComputedStyle(eRoot)
