@@ -25,10 +25,10 @@
 }
 
 :root {
-    /* VERDE CRT (principal) */
-    --color-primary: #7CFFB2;       /* destaque forte (títulos, foco) */
-    --color-primary-soft: #4FD98A;  /* texto padrão */
-    --color-primary-dark: #2FAF6E;  /* elementos secundários */
+    /* VERDE CRT */
+    --color-primary: #7CFFB2;
+    --color-primary-soft: #4FD98A;
+    --color-primary-dark: #2FAF6E;
 
     /* GLOW */
     --glow-soft: rgba(124, 255, 178, 0.08);
@@ -36,19 +36,14 @@
     --glow-strong: rgba(124, 255, 178, 0.4);
 
     /* BACKGROUND */
-    --bg-main: #080a09;       /* fundo geral */
-    --bg-section: #121614;    /* variação de seção */
-    --bg-surface: #1A1F1C;    /* caixas / cards */
-
-    /* AMBIENTE (madeira / hardware) */
-    --color-wood: #3A2F2A;
-    --color-wood-dark: #2A211D;
-    --color-wood-light: #4A3B34;
+    --bg-main: #080a09;
+    --bg-section: #121614;
+    --bg-surface: #1A1F1C;
 
     /* TEXTO */
-    --text-primary: #4FD98A;     /* padrão */
-    --text-secondary: #9FB3A8;   /* descrição */
-    --text-muted: #6E8076;      /* pouco importante */
+    --text-primary: #4FD98A;
+    --text-secondary: #9FB3A8;
+    --text-muted: #6E8076;
 
     /* BORDAS */
     --border-soft: rgba(124, 255, 178, 0.15);
@@ -57,20 +52,13 @@
     /* DISABLED */
     --accent-disabled: #2A3A36;
 
-    /* OVERLAY CRT */
-    --crt-overlay: rgba(0, 0, 0, 0.25);
-
-    /* SOMBRA */
-    --shadow-crt: 0 0 10px var(--glow-soft),
-                0 0 20px var(--glow-soft);
-
     /* TEXTO COM GLOW */
     --text-glow: 0 0 6px var(--glow-medium),
                 0 0 12px var(--glow-soft);
     
     /* TÍTULO COM GLOW */
     --title-text-glow: 0 0 8px var(--glow-medium),
-                0 0 12px var(--glow-medium);
+                    0 0 12px var(--glow-medium);
 
     /* BOX COM GLOW */
     --glow-box: 0 0 5px var(--glow-soft),
