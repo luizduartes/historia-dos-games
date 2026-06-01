@@ -3,8 +3,7 @@ import { checkAchievementsConditions } from "./pong-achievements.js";
 
 // Redireciona o usuário caso não esteja logado
 if (!sessionStorage.ID_USUARIO) {
-    alert('Faça login para jogar o PONG!')
-    changeToPage('../index.html')
+    changeToPage('../auth/login.html')
 }
 
 const canvas = document.getElementById("pong-canvas")
