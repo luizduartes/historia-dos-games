@@ -90,8 +90,7 @@
     flex-direction: column;
     width: 100%;
     flex-grow: 1;
-    gap: 1.5rem;
-    justify-content: center;
+    justify-content: space-evenly;
 
     .submit-button {
         background-color: var(--bg-main);
@@ -249,9 +248,8 @@
 
 /* ESTILIZAÇÃO ESPECÍFICA DA PÁGINA DE CADASTRO */
 .register-box {
-    height: 98%;
+    height: 99%;
     max-height: 680px;
-    min-width: 880px;
 }
 
 /* CAIXA DE AVISO DE LOGIN-BOX */

@@ -1,7 +1,7 @@
 /* PROFILE BOX */
 .profile-box {
     width: 96%;
-    height: 96%;
+    height: 99%;
     max-width: 1380px;
     max-height: 670px;
     display: flex;
@@ -43,6 +43,10 @@
     i {
         margin-left: 1px;
     }
+}
+
+.profile-box-main-content-top {
+    flex: 0 0 auto;
 }
 
 .terminal-box-top-button:nth-child(1) {
@@ -247,12 +251,8 @@
 }
 
 .profile-box-main-content-middle {
-    flex: 1;
+    flex: 0 0 auto;
 }
-
-/* .profile-box-main-content-bottom {
-    
-} */
 
 .window-recent-performance {
     display: flex;
@@ -347,7 +347,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     flex: 1;
-    padding: .5rem 0;
+    padding-top: .5rem;
+    height: 100%;
 }
 
 .achievements-card {
@@ -360,6 +361,8 @@
     flex-direction: column;
     align-items: center;
     gap: .5rem;
+    flex-shrink: 0;
+    min-width: 0;
 }
 
 .achievements-card-icon {
@@ -380,12 +383,25 @@
     font-weight: 1000;
     color: var(--color-primary);
     text-align: center;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .achievements-card-text-description {
     font-size: 11px;
     text-align: center;
     color: color-mix(in srgb, var(--color-primary-dark), var(--bg-main) 20%);
+    text-overflow: ellipsis;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* PROFILE BOX - CONTEÚDO INFERIOR DA BOX (CONTENDO BOTÕES DE NAVEGAÇÃO) */
