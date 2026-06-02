@@ -1,9 +1,9 @@
-.ranks-terminal-box {
-    width: 95%;
+.profile-box-bottom {
+    justify-content: flex-end;
 }
 
 .ranks-box-main-content {
-    flex-direction: row;
+    align-items: center;
 }
 
 .ranks-box-main-content-part {
@@ -15,10 +15,6 @@
 .ranks-box-main-content-left {
     width: min-content;
     flex-shrink: 0;
-}
-
-.ranks-box-main-content-right {
-    flex: 1;
 }
 
 .rank-selector-buttons-wrapper {
